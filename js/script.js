@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const taskTitle = document.getElementById('task-title');
     const imageGrid = document.getElementById('image-grid');
+    const resultMessage = document.getElementById('result-message');
     const resetButton = document.getElementById('reset-button');
 
     const imagesWithTasks = [
@@ -94,32 +95,72 @@ document.addEventListener('DOMContentLoaded', () => {
 
             container.addEventListener('click', () => {
                 if (image.task === imagesWithTasks[correctIndex].task) {
-                    alert('正解です!');
+                    showResultMessage('Correct!', true);
+                    applyOverlay(img, 'rgba(0, 255, 0, 1)'); // 正解の画像に半透明の緑色をオーバーレイ
+                    applyOverlayToNeighbors(container, 'rgba(255, 0, 0, 1)'); // 周囲の画像に半透明の赤色をオーバーレイ
                 } else {
-                    alert('不正解です!');
+                    showResultMessage('Incorrect!', false);
                 }
-                resetTask();
+                setTimeout(async function() {
+                    resetTask();
+                }, 1000);
             });
         });
     }
 
+    function showResultMessage(message, isCorrect) {
+        resultMessage.textContent = message;
+        if (isCorrect) {
+            resultMessage.style.color = 'green'; // 正解の場合の色
+        } else {
+            resultMessage.style.color = 'red'; // 不正解の場合の色
+        }
+    }
+
+    function applyOverlay(imageElement, color) {
+        imageElement.style.backgroundColor = color;
+    }
+
+    function applyOverlayToNeighbors(clickedimg, color) {
+        const allContainers = document.querySelectorAll('.image-container');
+        allContainers.forEach(container => {
+            const img = container.querySelector('img');
+            if (img !== clickedimg) {
+                applyOverlay(img, color); // 周囲の画像に半透明の色をオーバーレイ
+            }
+        });
+    }
+
+    function resetOverlays() {
+        const allImages = document.querySelectorAll('.image-container img');
+        allImages.forEach(img => {
+            img.style.backgroundColor = 'transparent';
+        });
+    }
+
+
     function resetTask() {
         correctIndex = getRandomInt(imagesWithTasks.length);
         taskTitle.innerHTML = `<strong>${imagesWithTasks[correctIndex].task}</strong> を選んでください`;
+        resultMessage.textContent = 'Checking...'; // 結果メッセージをリセット
+        resultMessage.style.color = 'green'; // メッセージの色をデフォルトに戻す
+        resetOverlays();
         loadImages();
     }
+
+    function preloadImages(images) {
+        images.forEach(image => {
+            const img = new Image();
+            img.src = image.src;
+        });
+    }
+    
+    // すべての画像を事前に読み込む
+    preloadImages(imagesWithTasks);
 
     resetButton.addEventListener('click', resetTask);
 
     resetTask();
 });
 
-function preloadImages(images) {
-    images.forEach(image => {
-        const img = new Image();
-        img.src = image.src;
-    });
-}
 
-// すべての画像を事前に読み込む
-preloadImages(imagesWithTasks);
