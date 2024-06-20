@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     const taskTitle = document.getElementById('task-title');
     const imageGrid = document.getElementById('image-grid');
@@ -58,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
         { src: 'img/tuki.jpg', task: '月' },
         { src: 'img/udedokei.jpg', task: '腕時計' },
         { src: 'img/umi.jpg', task: '海' },
-        // 各画像に対応するお題を追加
     ];
 
     let correctIndex = -1;
@@ -113,3 +113,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     resetTask();
 });
+
+function preloadImages(images) {
+    images.forEach(image => {
+        const img = new Image();
+        img.src = image.src;
+    });
+}
+
+// すべての画像を事前に読み込む
+preloadImages(imagesWithTasks);
