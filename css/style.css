@@ -186,6 +186,10 @@ strong {
   font-weight: bold;
 }
 
+.result-message {
+  color: green;
+}
+
 .image-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -198,6 +202,7 @@ strong {
   cursor: pointer;
   width: 100%;
   height: 100%;
+  filter: none;
 }
 
 .image-container img {
