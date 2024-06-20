@@ -148,16 +148,6 @@ document.addEventListener('DOMContentLoaded', () => {
         loadImages();
     }
 
-    function preloadImages(images) {
-        images.forEach(image => {
-            const img = new Image();
-            img.src = image.src;
-        });
-    }
-    
-    // すべての画像を事前に読み込む
-    preloadImages(imagesWithTasks);
-
     resetButton.addEventListener('click', resetTask);
 
     resetTask();
