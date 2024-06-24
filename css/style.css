@@ -212,6 +212,7 @@ strong {
   object-fit: cover;
   transition: border 0.3s;
   border: 2px solid #fff;
+  background-color: transparent;
 }
 
 .image-container.selected img {

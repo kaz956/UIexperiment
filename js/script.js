@@ -149,7 +149,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     resetButton.addEventListener('click', resetTask);
-
     resetTask();
 });
 

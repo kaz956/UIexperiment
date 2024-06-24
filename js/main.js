@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
               resultDiv.textContent = "Correct!";
               resultDiv.style.color = "green";
               setTimeout(async function() {
-                resultDiv.textContent = "";
+                resultDiv.textContent = "Checking...";
                 output.value = "";
                 currentWord = getRandomWord();
                 wordDiv.textContent = currentWord;
