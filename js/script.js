@@ -1,3 +1,5 @@
+"use strict";
+
 /*---------- ハンバーガーメニュー ----------*/
 const hamburger = document.querySelector(".js_hamburger");
 const navigation = document.querySelector(".js_navigation");
