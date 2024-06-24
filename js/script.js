@@ -139,6 +139,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let correctIndex = -1;
     const numCols = 6;
+    let allImages = [...imagesWithTasks];
+    shuffleArray(allImages);
+    let selectedImages = allImages.slice(0, 54);
 
     function preloadImages(images) {
         images.forEach(image => {
@@ -163,9 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function loadImages() {
         imageGrid.innerHTML = '';
-        let allImages = [...imagesWithTasks];
-        shuffleArray(allImages);
-        let selectedImages = allImages.slice(0, 54);
 
         if (!allImages.find(image => image.task === imagesWithTasks[correctIndex].task)) {
             allImages[getRandomInt(allImages.length)].task = imagesWithTasks[correctIndex].task;
@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             container.addEventListener('click', () => {
                 const allContainers = document.querySelectorAll('.image-container');
-                if (image.task === imagesWithTasks[correctIndex].task) {
+                if (image.task === selectedImages[correctIndex].task) {
                     showResultMessage('Correct!', true);
                 } else {
                     showResultMessage('Incorrect!', false);
@@ -247,8 +247,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     function resetTask() {
-        correctIndex = getRandomInt(imagesWithTasks.length);
-        taskTitle.innerHTML = `「<strong>${imagesWithTasks[correctIndex].task}</strong>」 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を選んでください`;
+        shuffleArray(selectedImages);
+        correctIndex = getRandomInt(selectedImages.length);
+        taskTitle.innerHTML = `「<strong>${selectedImages[correctIndex].task}</strong>」 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を選んでください`;
         resultMessage.textContent = 'Checking..'; // 結果メッセージをリセット
         resultMessage.style.color = 'green'; // メッセージの色をデフォルトに戻す
         resetOverlays();
