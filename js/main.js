@@ -120,17 +120,6 @@ function getRandomWord() {
   return words[randomIndex];
 }
 
-function preloadImages(images) {
-  images.forEach(image => {
-      const img = new Image();
-      img.src = image.src;
-  });
-}
-
-// すべての画像を事前に読み込む
-preloadImages(imagesWithTasks);
-
-
 async function startGame() {
   
 }

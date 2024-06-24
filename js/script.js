@@ -1,4 +1,5 @@
 
+
 document.addEventListener('DOMContentLoaded', () => {
     const taskTitle = document.getElementById('task-title');
     const imageGrid = document.getElementById('image-grid');
@@ -60,9 +61,74 @@ document.addEventListener('DOMContentLoaded', () => {
         { src: 'img/tuki.jpg', task: '月' },
         { src: 'img/udedokei.jpg', task: '腕時計' },
         { src: 'img/umi.jpg', task: '海' },
+        { src: 'img/huusenn.jpg', task: '風船' },
+        { src: 'img/danro.jpg', task: '暖炉' },
+        { src: 'img/singouki.jpg', task: '信号機' },
+        { src: 'img/torofi-.jpg', task: 'トロフィー' },
+        { src: 'img/tenisubo-ru.jpg', task: 'テニスボール' },
+        { src: 'img/yakyuubo-ru.jpg', task: '野球ボール' },
+        { src: 'img/sinnbunnsi.jpg', task: '新聞紙' },
+        { src: 'img/kitte.jpg', task: '切手' },
+        { src: 'img/denntaku.jpg', task: '電卓' },
+        { src: 'img/shoukaki.jpg', task: '消火器' },
+        { src: 'img/hijouguti.jpg', task: '非常口' },
+        { src: 'img/jaguti.jpg', task: '蛇口' },
+        { src: 'img/mennbou.jpg', task: '綿棒' },
+        { src: 'img/matti.jpg', task: 'マッチ' },
+        { src: 'img/suponnji.jpg', task: 'スポンジ' },
+        { src: 'img/mausu.jpg', task: 'マウス' },
+        { src: 'img/bi-ru.jpg', task: 'ビール' },
+        { src: 'img/koara.jpg', task: 'コアラ' },
+        { src: 'img/sabaku.jpg', task: '砂漠' },
+        { src: 'img/hyouzann.jpg', task: '氷山' },
+        { src: 'img/hitode.jpg', task: 'ヒトデ' },
+        { src: 'img/kaigara.jpg', task: '貝殻' },
+        { src: 'img/bare-bo-ru.jpg', task: 'バレーボール' },
+        { src: 'img/heddohonn.jpg', task: 'ヘッドホン' },
+        { src: 'img/tenntoumusi.jpg', task: 'テントウムシ' },
+        { src: 'img/tennto.jpg', task: 'テント' },
+        { src: 'img/hikouki.jpg', task: '飛行機' },
+        { src: 'img/herikoputa-.jpg', task: 'ヘリコプター' },
+        { src: 'img/pannda.jpg', task: 'パンダ' },
+        { src: 'img/roketto.jpg', task: 'ロケット' },
+        { src: 'img/huusha.jpg', task: '風車' },
+        { src: 'img/kame.jpg', task: '亀' },
+        { src: 'img/shinnkannsenn.jpg', task: '新幹線' },
+        { src: 'img/hinode.jpg', task: '日の出' },
+        { src: 'img/chou.jpg', task: 'チョウ' },
+        { src: 'img/pennginn.jpg', task: 'ペンギン' },
+        { src: 'img/yotto.jpg', task: 'ヨット' },
+        { src: 'img/hunnka.jpg', task: '噴火' },
+        { src: 'img/kirinn.jpg', task: 'キリン' },
+        { src: 'img/shimauma.jpg', task: 'シマウマ' },
+        { src: 'img/yukidaruma.jpg', task: '雪だるま' },
+        { src: 'img/sakka-bo-ru.jpg', task: 'サッカーボール' },
+        { src: 'img/niji.jpg', task: '虹' },
+        { src: 'img/aisukuri-mu.jpg', task: 'アイスクリーム' },
+        { src: 'img/hannba-ga-.jpg', task: 'ハンバーガー' },
+        { src: 'img/houchou.jpg', task: '包丁' },
+        { src: 'img/hasami.jpg', task: 'ハサミ' },
+        { src: 'img/taiya.jpg', task: 'タイヤ' },
+        { src: 'img/ichou.jpg', task: 'イチョウ' },
+        { src: 'img/momiji.jpg', task: '紅葉' },
+        { src: 'img/sushi.jpg', task: '寿司' },
+        { src: 'img/ra-menn.jpg', task: 'ラーメン' },
+        { src: 'img/do-natu.jpg', task: 'ドーナツ' },
+        { src: 'img/kinngyo.jpg', task: '金魚' },
     ];
 
     let correctIndex = -1;
+    const numCols = 6;
+
+    function preloadImages(images) {
+        images.forEach(image => {
+            const img = new Image();
+            img.src = image.src;
+        });
+    }
+    
+    // すべての画像を事前に読み込む
+    //preloadImages(imagesWithTasks);
 
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
@@ -78,13 +144,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function loadImages() {
         imageGrid.innerHTML = '';
         let allImages = [...imagesWithTasks];
-        //shuffleArray(allImages);
+        shuffleArray(allImages);
+        let selectedImages = allImages.slice(0, 54);
 
         if (!allImages.find(image => image.task === imagesWithTasks[correctIndex].task)) {
             allImages[getRandomInt(allImages.length)].task = imagesWithTasks[correctIndex].task;
         }
 
-        allImages.forEach((image, index) => {
+        selectedImages.forEach((image, index) => {
             const container = document.createElement('div');
             container.classList.add('image-container');
             const img = document.createElement('img');
@@ -94,16 +161,16 @@ document.addEventListener('DOMContentLoaded', () => {
             imageGrid.appendChild(container);
 
             container.addEventListener('click', () => {
+                const allContainers = document.querySelectorAll('.image-container');
                 if (image.task === imagesWithTasks[correctIndex].task) {
                     showResultMessage('Correct!', true);
-                    applyOverlay(img, 'rgba(0, 255, 0, 1)'); // 正解の画像に半透明の緑色をオーバーレイ
-                    applyOverlayToNeighbors(container, 'rgba(255, 0, 0, 1)'); // 周囲の画像に半透明の赤色をオーバーレイ
                 } else {
                     showResultMessage('Incorrect!', false);
+                    applyOverlay(container, 'incorrect');
                 }
-                setTimeout(async function() {
-                    resetTask();
-                }, 1000);
+                applyOverlay(allContainers[correctIndex], 'correct'); // 正解の画像に半透明の緑色をオーバーレイ
+                applyOverlayToNeighbors(allContainers[correctIndex], 'incorrect'); // 周囲の画像に半透明の赤色をオーバーレイ
+                setTimeout(resetTask, 1000);
             });
         });
     }
@@ -117,31 +184,51 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function applyOverlay(imageElement, color) {
-        imageElement.style.backgroundColor = color;
+    function applyOverlay(container, className) {
+        container.classList.add(className);
     }
 
-    function applyOverlayToNeighbors(clickedimg, color) {
+    function applyOverlayToNeighbors(clickedContainer, className) {
         const allContainers = document.querySelectorAll('.image-container');
-        allContainers.forEach(container => {
-            const img = container.querySelector('img');
-            if (img !== clickedimg) {
-                applyOverlay(img, color); // 周囲の画像に半透明の色をオーバーレイ
+        const index = Array.from(allContainers).indexOf(clickedContainer);
+        const numRows = Math.ceil(allContainers.length / numCols);
+
+        const row = Math.floor(index / numCols);
+        const col = index % numCols;
+
+        // 周囲8マスのインデックスを計算
+        const neighbors = [
+            { row: row - 1, col: col - 1 },
+            { row: row - 1, col },
+            { row: row - 1, col: col + 1 },
+            { row, col: col - 1 },
+            { row, col: col + 1 },
+            { row: row + 1, col: col - 1 },
+            { row: row + 1, col },
+            { row: row + 1, col: col + 1 }
+        ];
+
+        neighbors.forEach(neighbor => {
+            const neighborIndex = neighbor.row * numCols + neighbor.col;
+            if (neighbor.row >= 0 && neighbor.row < numRows &&
+                neighbor.col >= 0 && neighbor.col < numCols &&
+                neighborIndex !== index) {
+                applyOverlay(allContainers[neighborIndex], className);
             }
         });
     }
 
     function resetOverlays() {
-        const allImages = document.querySelectorAll('.image-container img');
-        allImages.forEach(img => {
-            img.style.backgroundColor = 'transparent';
+        const allContainers = document.querySelectorAll('.image-container');
+        allContainers.forEach(container => {
+            container.classList.remove('correct', 'incorrect');
         });
     }
 
 
     function resetTask() {
         correctIndex = getRandomInt(imagesWithTasks.length);
-        taskTitle.innerHTML = `<strong>${imagesWithTasks[correctIndex].task}</strong> を選んでください`;
+        taskTitle.innerHTML = `「<strong>${imagesWithTasks[correctIndex].task}</strong>」 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を選んでください`;
         resultMessage.textContent = 'Checking..'; // 結果メッセージをリセット
         resultMessage.style.color = 'green'; // メッセージの色をデフォルトに戻す
         resetOverlays();
