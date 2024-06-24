@@ -132,7 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentWord = getRandomWord();
   wordDiv.textContent = currentWord;
 
-
   //ダブルタップズームを防ぐ
   let lastTouchEnd = 0;
   document.addEventListener('touchend', function (event) {

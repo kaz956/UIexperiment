@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function resetTask() {
         correctIndex = getRandomInt(imagesWithTasks.length);
         taskTitle.innerHTML = `<strong>${imagesWithTasks[correctIndex].task}</strong> を選んでください`;
-        resultMessage.textContent = 'Checking...'; // 結果メッセージをリセット
+        resultMessage.textContent = 'Checking..'; // 結果メッセージをリセット
         resultMessage.style.color = 'green'; // メッセージの色をデフォルトに戻す
         resetOverlays();
         loadImages();
