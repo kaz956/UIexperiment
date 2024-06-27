@@ -124,6 +124,8 @@ async function startGame() {
   
 }
 
+document.addEventListener("dblclick", function(e){ e.preventDefault();}, { passive: false });
+
 document.addEventListener('DOMContentLoaded', () => {
   const wordDiv = document.getElementById("word");
   const output = document.getElementById('output');
