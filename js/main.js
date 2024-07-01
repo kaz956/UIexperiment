@@ -178,7 +178,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 wordDiv.textContent = currentWord;
               }, 1000);
             } else {
-              resultDiv.textContent = "Checking..."; // タイピング中はエラーメッセージをクリア
+              resultDiv.textContent = "Correct!"; // タイピング中はエラーメッセージをクリア
+              sendMessageToSwift("Correct")
               resultDiv.style.color = "green";
             }
           } else {
