@@ -164,6 +164,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function sendMessageToSwift(message) {
+        if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.jsToSwift) {
+            window.webkit.messageHandlers.jsToSwift.postMessage(message);
+        } else {
+            console.error("Swiftのメッセージハンドラーが見つかりません");
+        }
+    }
+
     function loadImages() {
         imageGrid.innerHTML = '';
 
@@ -184,8 +192,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const allContainers = document.querySelectorAll('.image-container');
                 if (image.task === selectedImages[correctIndex].task) {
                     showResultMessage('Correct!', true);
+                    sendMessageToSwift("Correct")
                 } else {
                     showResultMessage('Incorrect!', false);
+                    sendMessageToSwift("Inorrect")
                     applyOverlay(container, 'incorrect');
                 }
                 applyOverlay(allContainers[correctIndex], 'correct'); // 正解の画像に半透明の緑色をオーバーレイ

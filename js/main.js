@@ -144,6 +144,14 @@ document.addEventListener('DOMContentLoaded', () => {
     lastTouchEnd = now;
   }, false);
 
+  function sendMessageToSwift(message) {
+    if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.jsToSwift) {
+        window.webkit.messageHandlers.jsToSwift.postMessage(message);
+    } else {
+        console.error("Swiftのメッセージハンドラーが見つかりません");
+    }
+  }
+
   document.querySelectorAll('.key').forEach(key => {
       key.addEventListener('click', () => {
           const keyValue = key.textContent;
@@ -161,6 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
           if (typedWord === currentWord.substring(0, typedWord.length)) {
             if (typedWord === currentWord) {
               resultDiv.textContent = "Correct!";
+              sendMessageToSwift("Correct")
               resultDiv.style.color = "green";
               setTimeout(async function() {
                 resultDiv.textContent = "Checking...";
@@ -174,6 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
           } else {
             resultDiv.textContent = "Incorrect!";
+            sendMessageToSwift("Incorrect")
             resultDiv.style.color = "red";
           }
       });
