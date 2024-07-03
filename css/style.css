@@ -179,15 +179,26 @@ body {
 
 .task-title {
   margin-bottom: 20px;
-  margin-top: 120px;
+  margin-top: 90px;
 }
 
 strong {
   font-weight: bold;
 }
 
+.imagetask {
+  display: flex;
+  justify-content: space-between;
+  font-size: 24px;
+}
+
 .result-message {
   color: green;
+  font-size: 18px;
+}
+
+.countdown {
+  font-weight: bold;
 }
 
 .image-grid {
@@ -237,15 +248,26 @@ strong {
 .image-container.selected img {
   border: 2px solid #007BFF;
 }
+.nav-btn {
+  display: flex;
+  justify-content: space-between;
+}
 
-#reset-button {
-  margin: 40px auto 80px auto;
-  padding: 10px 20px;
-  font-size: 16px;
+#start-button {
+  margin: 20px auto 80px auto;
+  padding: 8px 16px;
+  font-size: 12px;
   cursor: pointer;
   border: 1px solid #000;
 }
 
+#stop-button {
+  margin: 20px auto 80px auto;
+  padding: 8px 16px;
+  font-size: 12px;
+  cursor: pointer;
+  border: 1px solid #000;
+}
 
 /* クリックした際の青い枠線を削除 */
 *:focus {

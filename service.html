@@ -92,11 +92,17 @@
     <!-- /.m_kv -->
     <main class="l_main">
       <h1 class="task-title" id="task-title">お題の画像<br>を選んでください</h1>
-      <p class="result-message" id="result-message">Checking...</p>
+      <div class="imagetask">
+        <p class="result-message" id="result-message">Checking...</p>
+        <p class="countdown" id="countdown">10</p>
+      </div>
       <div class="image-grid" id="image-grid">
           <!-- ここに30枚の画像を配置します -->
       </div>
-      <button id="reset-button">リセット</button>
+      <div class="nav-btn">
+        <button id="start-button">スタート</button>
+        <button id="stop-button">ストップ</button>
+      </div>
     </main>
     <!-- /.l_main -->
     <footer class="l_footer">
