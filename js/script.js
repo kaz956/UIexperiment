@@ -208,23 +208,26 @@ document.addEventListener('DOMContentLoaded', () => {
             img.alt = `画像${index + 1}`;
             container.appendChild(img);
             imageGrid.appendChild(container);
-
+            
             container.addEventListener('click', () => {
-                clearTimeout(timeoutId);
-                clearInterval(countdownInterval);
-                const allContainers = document.querySelectorAll('.image-container');
-                if (image.task === selectedImages[correctIndex].task) {
-                    showResultMessage('Correct!', true);
-                    sendMessageToSwift("Correct")
-                } else {
-                    showResultMessage('Incorrect!', false);
-                    sendMessageToSwift("Inorrect")
-                    applyOverlay(container, 'incorrect');
+                if (stopflag == 0) {
+                    clearTimeout(timeoutId);
+                    clearInterval(countdownInterval);
+                    const allContainers = document.querySelectorAll('.image-container');
+                    if (image.task === selectedImages[correctIndex].task) {
+                        showResultMessage('Correct!', true);
+                        sendMessageToSwift("Correct")
+                        applyOverlay(container, 'selectedcorrect');
+                    } else {
+                        showResultMessage('Incorrect!', false);
+                        sendMessageToSwift("Inorrect")
+                        applyOverlay(container, 'selectedincorrect');
+                    }
+                    applyOverlay(allContainers[correctIndex], 'correct'); // 正解の画像に半透明の緑色をオーバーレイ
+                    applyOverlayToNeighbors(allContainers[correctIndex], 'incorrect'); // 周囲の画像に半透明の赤色をオーバーレイ
+                    timeoutId = setTimeout(resetTask, 1000);
+                    clearInterval(countdownInterval);
                 }
-                applyOverlay(allContainers[correctIndex], 'correct'); // 正解の画像に半透明の緑色をオーバーレイ
-                applyOverlayToNeighbors(allContainers[correctIndex], 'incorrect'); // 周囲の画像に半透明の赤色をオーバーレイ
-                timeoutId = setTimeout(resetTask, 1000);
-                clearInterval(countdownInterval);
             });
         });;
     }
@@ -298,22 +301,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function start () {
+        console.log(stopflag);
         if (startflag == 0) {
             startflag++;
             resetTask();
         }
         if (startflag != 0 && stopflag == 1) {
+            clearTimeout(timeoutId);
+            clearInterval(countdownInterval);
             const countdownElement = document.getElementById('countdown');
             const countdownText = countdownElement.textContent;
             const seconds = parseInt(countdownText);
             startCountdown(seconds);
-            setTimeout(resetTask, seconds * 1000);
+            timeoutId = setTimeout(resetTask, seconds * 1300);
             stopflag--;
         }
     }
 
     function stop () {
-        if (stopflag == 0) {
+        console.log(stopflag);
+        if (startflag != 0 && stopflag == 0) {
             clearTimeout(timeoutId);
             clearInterval(countdownInterval);
             stopflag++;
