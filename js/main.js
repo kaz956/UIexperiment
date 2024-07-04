@@ -135,14 +135,14 @@ document.addEventListener('DOMContentLoaded', () => {
   wordDiv.textContent = currentWord;
 
   //ダブルタップズームを防ぐ
-  let lastTouchEnd = 0;
-  document.addEventListener('touchend', function (event) {
-    const now = (new Date()).getTime();
-    if (now - lastTouchEnd <= 300) {
-      event.preventDefault();
-    }
-    lastTouchEnd = now;
-  }, false);
+  // let lastTouchEnd = 0;
+  // document.addEventListener('touchend', function (event) {
+  //   const now = (new Date()).getTime();
+  //   if (now - lastTouchEnd <= 300) {
+  //     event.preventDefault();
+  //   }
+  //   lastTouchEnd = now;
+  // }, false);
 
   function sendMessageToSwift(message) {
     if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.jsToSwift) {
