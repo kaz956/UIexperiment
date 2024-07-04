@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 applyOverlay(allContainers[correctIndex], 'correct'); // 正解の画像に半透明の緑色をオーバーレイ
                 applyOverlayToNeighbors(allContainers[correctIndex], 'incorrect'); // 周囲の画像に半透明の赤色をオーバーレイ
             }
-        }, 900);
+        }, 850);
     }
 
     function sendMessageToSwift(message) {
