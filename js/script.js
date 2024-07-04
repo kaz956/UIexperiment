@@ -297,7 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         timeoutId = setTimeout(resetTask, 10000);
         clearInterval(countdownInterval);
-        startCountdown(10);
+        startCountdown(15);
     }
 
     function start () {
