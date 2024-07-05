@@ -220,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         applyOverlay(container, 'selectedcorrect');
                     } else {
                         showResultMessage('Incorrect!', false);
-                        sendMessageToSwift("Inorrect")
+                        sendMessageToSwift("Incorrect")
                         applyOverlay(container, 'selectedincorrect');
                     }
                     applyOverlay(allContainers[correctIndex], 'correct'); // 正解の画像に半透明の緑色をオーバーレイ

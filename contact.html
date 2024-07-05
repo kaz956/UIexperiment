@@ -2,11 +2,11 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>お問い合わせ|ZeroPlus Corporate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>UITest</title>
     <meta
       name="description"
-      content="お申し込みフォームにて、お問い合わせ内容をご記入ください。"
+      content="スタートアップのためのデジタルマーケティングを支援"
     />
     <meta name="format-detection" content="telephone=no" />
     <!-- favicon/web-clip-icon -->
@@ -20,11 +20,11 @@
       property="og:url"
       content="https://zero-plus.io/lesson/ogp/hp_ogp.jpg"
     />
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="お問い合わせ|ZeroPlus Corporate" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="ZeroPlus Corporate" />
     <meta
       property="og:description"
-      content="お申し込みフォームにて、お問い合わせ内容をご記入ください。"
+      content="スタートアップのためのデジタルマーケティングを支援"
     />
     <meta
       property="og:image"
@@ -34,7 +34,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:description"
-      content="お申し込みフォームにて、お問い合わせ内容をご記入ください。"
+      content="スタートアップのためのデジタルマーケティングを支援"
     />
     <meta
       name="twitter:image:src"
@@ -51,25 +51,26 @@
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/style.css" />
     <!-- js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.3/gsap.min.js"></script>
     <script src="js/main.js" defer></script>
   </head>
   <body class="js_body">
     <header class="l_header">
-      <p class="l_header-logo">
-        <a href="index.html" class="l_header-logo_link">ZeroPlus</a>
-      </p>
+      <h1 class="l_header-logo">
+        <a href="index.html" class="l_header-logo_link">実験用UI</a>
+      </h1>
       <nav class="l_header-nav js_navigation">
         <ul class="l_header-nav_list">
           <li class="l_header-nav_item">
-            <a href="index.html" class="l_header-nav_link">トップ</a>
+            <a href="contact.html" class="l_header-nav_link">入力</a>
           </li>
           <li class="l_header-nav_item">
-            <a href="service.html" class="l_header-nav_link">サービス</a>
+            <a href="service.html" class="l_header-nav_link">画像選択</a>
           </li>
-          <li class="l_header-nav_item">
-            <a href="case.html" class="l_header-nav_link">事例</a>
-          </li>
-          <li class="l_header-nav_item">
+          <!-- <li class="l_header-nav_item">
+            <a href="case.html" class="l_header-nav_link">探索</a>
+          </li> -->
+          <!-- <li class="l_header-nav_item">
             <a href="company.html" class="l_header-nav_link">会社概要</a>
           </li>
           <li class="l_header-nav_item">
@@ -77,7 +78,7 @@
           </li>
           <li class="l_header-nav_item">
             <a href="contact.html" class="l_header-nav_link">お問い合わせ</a>
-          </li>
+          </li> -->
         </ul>
       </nav>
       <button class="m_hamburger js_hamburger">
@@ -86,151 +87,79 @@
         <span class="m_hamburger-bar"></span>
       </button>
     </header>
-    <div class="m_kv">
-      <div class="m_kv-inner l_container-lg">
-        <div class="m_kv-box">
-          <h1 class="m_kv-title">お問い合わせ</h1>
-          <p class="m_kv-desc">以下のフォームからご記入ください。</p>
-        </div>
-        <!-- /.m_kv-box -->
-      </div>
-      <!-- /.m_kv-inner -->
-    </div>
-    <!-- /.m_kv -->
-
+    
+    <!-- /.top_kv -->
     <main class="l_main">
-      <div class="l_contents">
-        <div class="l_container-sm">
-          <form action="" class="contact_form">
-            <dl class="contact_form_list">
-              <dt class="contact_form_heading">
-                会社名<span class="contact_form_example"
-                  >例.株式会社Sample</span
-                >
-              </dt>
-              <dd class="contact_form_detail">
-                <input type="text" class="contact_form_input" />
-              </dd>
-              <dt class="contact_form_heading">
-                お名前<span class="contact_form_example">例.山田太郎</span>
-                <span class="contact_form_required">必須</span>
-              </dt>
-              <dd class="contact_form_detail">
-                <input type="text" class="contact_form_input" />
-              </dd>
-              <dt class="contact_form_heading">
-                お名前 (フリガナ)<span class="contact_form_example"
-                  >例.ヤマダタロウ</span
-                >
-                <span class="contact_form_required">必須</span>
-              </dt>
-              <dd class="contact_form_detail">
-                <input type="text" class="contact_form_input" />
-              </dd>
-              <dt class="contact_form_heading">
-                電話番号<span class="contact_form_example">例.0312345678</span>
-                <span class="contact_form_required">必須</span>
-              </dt>
-              <dd class="contact_form_detail">
-                <input type="tel" class="contact_form_input" />
-              </dd>
-              <dt class="contact_form_heading">
-                メールアドレス<span class="contact_form_example"
-                  >例.info@sample.com</span
-                >
-                <span class="contact_form_required">必須</span>
-              </dt>
-              <dd class="contact_form_detail">
-                <input type="email" class="contact_form_input" />
-              </dd>
-              <dt class="contact_form_heading">
-                お問い合わせ項目
-                <span class="contact_form_required">必須</span>
-              </dt>
-              <dd class="contact_form_detail">
-                <ul class="contact_form_radio-list">
-                  <li class="contact_form_radio-item">
-                    <input
-                      type="radio"
-                      name="content"
-                      value=""
-                      id="1"
-                      class="contact_form_radio"
-                      checked
-                    /><label for="1" class="contact_form_label">項目A</label>
-                  </li>
-                  <li class="contact_form_radio-item">
-                    <input
-                      type="radio"
-                      name="content"
-                      value=""
-                      id="2"
-                      class="contact_form_radio"
-                    /><label for="2" class="contact_form_label">項目B</label>
-                  </li>
-                  <li class="contact_form_radio-item">
-                    <input
-                      type="radio"
-                      name="content"
-                      value=""
-                      id="3"
-                      class="contact_form_radio"
-                    /><label for="3" class="contact_form_label">項目C</label>
-                  </li>
-                  <li class="contact_form_radio-item">
-                    <input
-                      type="radio"
-                      name="content"
-                      value=""
-                      id="4"
-                      class="contact_form_radio"
-                    /><label for="4" class="contact_form_label">項目D</label>
-                  </li>
-                </ul>
-              </dd>
-              <dt class="contact_form_heading">
-                お問い合わせ内容
-                <span class="contact_form_required">必須</span>
-              </dt>
-              <dd class="contact_form_detail">
-                <textarea
-                  class="contact_form_textarea"
-                  placeholder="ご自由にご記入ください。"
-                ></textarea>
-              </dd>
-            </dl>
-
-            <div class="contact_form_btn-wrapper">
-              <div class="m_btn m_btn__right-arrow">
-                <input
-                  type="submit"
-                  class="m_btn_input"
-                  value="この内容で送信する"
-                />
-              </div>
-              <!-- /.m_btn -->
-            </div>
-            <!-- /.contact_form_btn-wrapper -->
-          </form>
+      <section class="keybordUI">
+        <div id="word">Loading...</div>
+        <textarea id="output" rows="5" cols="50" readonly></textarea>
+        <div id="result">Checking...</div>
+        <div class="keyboard">
+          <div class="row">
+            <button class="key">1</button>
+            <button class="key">2</button>
+            <button class="key">3</button>
+            <button class="key">4</button>
+            <button class="key">5</button>
+            <button class="key">6</button>
+            <button class="key">7</button>
+            <button class="key">8</button>
+            <button class="key">9</button>
+            <button class="key">0</button>
+          </div>
+          <div class="row">
+            <button class="key">q</button>
+            <button class="key">w</button>
+            <button class="key">e</button>
+            <button class="key">r</button>
+            <button class="key">t</button>
+            <button class="key">y</button>
+            <button class="key">u</button>
+            <button class="key">i</button>
+            <button class="key">o</button>
+            <button class="key">p</button>
+          </div>
+          <div class="row">
+            <button class="key">a</button>
+            <button class="key">s</button>
+            <button class="key">d</button>
+            <button class="key">f</button>
+            <button class="key">g</button>
+            <button class="key">h</button>
+            <button class="key">j</button>
+            <button class="key">k</button>
+            <button class="key">l</button>
+            <button class="key delete">Delete</button>
+          </div>
+          <div class="row">
+            <button class="key">z</button>
+            <button class="key">x</button>
+            <button class="key">c</button>
+            <button class="key">v</button>
+            <button class="key">b</button>
+            <button class="key">n</button>
+            <button class="key">m</button>
+            <button class="key space">Space</button>
+            <button class="key enter">Enter</button>
+          </div>
         </div>
-        <!-- /.l_container-sm -->
-      </div>
-      <!-- /.l_contents -->
+      </section>
     </main>
-
     <footer class="l_footer">
-      <p class="l_footer_logo">ZeroPlus</p>
+      <p class="l_footer_logo">
+        <a href="" class="l_footer_logo_link">実験用UI</a>
+      </p>
       <ul class="l_footer_list">
         <li class="l_footer_item">
-          <a href="index.html" class="l_footer_link">トップ</a>
+          <a href="contact.html" class="l_footer_link">入力</a>
         </li>
         <li class="l_footer_item">
-          <a href="service.html" class="l_footer_link">サービス</a>
+          <a href="service.html" class="l_footer_link">画像選択</a>
         </li>
-        <li class="l_footer_item">
-          <a href="case.html" class="l_footer_link">事例</a>
-        </li>
-        <li class="l_footer_item">
+        <!-- <li class="l_footer_item">
+          <a href="case.html" class="l_footer_link">探索</a>
+        </li> -->
+        <!-- <li class="l_footer_item">
           <a href="company.html" class="l_footer_link">会社概要</a>
         </li>
         <li class="l_footer_item">
@@ -238,11 +167,12 @@
         </li>
         <li class="l_footer_item">
           <a href="contact.html" class="l_footer_link">お問い合わせ</a>
-        </li>
+        </li> -->
       </ul>
       <p class="l_footer-copyright">
-        <small class="l_footer-copyright_txt">&copy; 2018 sample.inc</small>
+        <small class="l_footer-copyright_txt">&copy; 2024 UIexperiment</small>
       </p>
     </footer>
+    <!-- /.l_footer -->
   </body>
 </html>

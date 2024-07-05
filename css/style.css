@@ -431,6 +431,14 @@ span {
   background: var(--gray-color02);
 }
 
+.l_footer2 {
+  margin-top: 100px;
+  padding: 100px 24px;
+  width: 100%;
+  text-align: center;
+  background: var(--gray-color02);
+}
+
 .l_footer_logo {
   font-size: 20px;
   font-weight: bold;
@@ -460,8 +468,9 @@ span {
   }
 }
 
-.l_footer_item {
+.l_footer_item2 {
   font-size: 14px;
+  color: #002fff;
 }
 
 @media screen and (min-width: 768px) {
