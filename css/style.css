@@ -203,7 +203,7 @@ strong {
 
 .image-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   width: 90%;
   max-width: 1200px;
 }
@@ -217,10 +217,10 @@ strong {
 }
 
 .image-container img {
-  width: calc(70vw / 6);
-  height: calc(70vw / 6);
+  width: calc(70vw / 5);
+  height: calc(70vw / 5);
   display: block;
-  object-fit: cover;
+  object-fit: scale-down;
   transition: border 0.3s;
   border: 2px solid #fff;
   background-color: transparent;

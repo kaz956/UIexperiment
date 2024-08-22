@@ -229,10 +229,10 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     let correctIndex = -1;
-    const numCols = 6;
+    const numCols = 5;
     let allImages = [...imagesWithTasks];
     shuffleArray(allImages);
-    let selectedImages = allImages.slice(0, 54);
+    let selectedImages = allImages.slice(0, 30);
     let timeoutId = null;
     let countdownInterval = null;
     let startflag = 0;
@@ -314,7 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                     applyOverlay(allContainers[correctIndex], 'correct'); // 正解の画像に半透明の緑色をオーバーレイ
                     applyOverlayToNeighbors(allContainers[correctIndex], 'incorrect'); // 周囲の画像に半透明の赤色をオーバーレイ
-                    timeoutId = setTimeout(resetTask, 1000);
+                    timeoutId = setTimeout(resetTask, 3850);
                     clearInterval(countdownInterval);
                 }
             });
@@ -384,9 +384,9 @@ document.addEventListener('DOMContentLoaded', () => {
         resetOverlays();
         loadImages();
 
-        timeoutId = setTimeout(resetTask, 10000);
+        timeoutId = setTimeout(resetTask, 3850);
         clearInterval(countdownInterval);
-        startCountdown(10);
+        startCountdown(3);
     }
 
     function start () {
