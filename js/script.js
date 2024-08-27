@@ -260,19 +260,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function startCountdown(seconds) {
-        const allContainers = document.querySelectorAll('.image-container');
-        countdownElement.textContent = `${seconds}`;
-        countdownInterval = setInterval(() => {
-            seconds--;
-            if (seconds >= 0) {
-                countdownElement.textContent = `${seconds}`;
-            }
-            if (seconds <= 0) {
-                applyOverlay(allContainers[correctIndex], 'correct'); // 正解の画像に半透明の緑色をオーバーレイ
-                applyOverlayToNeighbors(allContainers[correctIndex], 'incorrect'); // 周囲の画像に半透明の赤色をオーバーレイ
-            }
-        }, 850);
-    }
+    const allContainers = document.querySelectorAll('.image-container');
+    let countdown = seconds; // 秒数を保持する変数
+    countdownElement.textContent = countdown.toFixed(1); // 初期値を表示
+
+    countdownInterval = setInterval(() => {
+        countdown -= 0.1; // 0.1秒ずつ減らす
+
+        if (countdown > 0) {
+            countdownElement.textContent = countdown.toFixed(1); // 小数点第1位まで表示
+        } else {
+            clearInterval(countdownInterval); // カウントダウンが0以下になったらタイマーを停止
+            countdownElement.textContent = "0.0"; // 最終的に0.0と表示
+            applyOverlay(allContainers[correctIndex], 'correct'); // 正解の画像にオーバーレイを適用
+            applyOverlayToNeighbors(allContainers[correctIndex], 'incorrect'); // 周囲の画像にオーバーレイを適用
+        }
+    }, 90); // 100ミリ秒ごとに更新
+}
+
 
     function sendMessageToSwift(message) {
         if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.jsToSwift) {
@@ -314,7 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                     applyOverlay(allContainers[correctIndex], 'correct'); // 正解の画像に半透明の緑色をオーバーレイ
                     applyOverlayToNeighbors(allContainers[correctIndex], 'incorrect'); // 周囲の画像に半透明の赤色をオーバーレイ
-                    timeoutId = setTimeout(resetTask, 3850);
+                    timeoutId = setTimeout(resetTask, 3350);
                     clearInterval(countdownInterval);
                 }
             });
@@ -384,9 +389,9 @@ document.addEventListener('DOMContentLoaded', () => {
         resetOverlays();
         loadImages();
 
-        timeoutId = setTimeout(resetTask, 3850);
+        timeoutId = setTimeout(resetTask, 3350);
         clearInterval(countdownInterval);
-        startCountdown(3);
+        startCountdown(2.5);
     }
 
     function start () {
