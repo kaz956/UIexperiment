@@ -319,7 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                     applyOverlay(allContainers[correctIndex], 'correct'); // 正解の画像に半透明の緑色をオーバーレイ
                     applyOverlayToNeighbors(allContainers[correctIndex], 'incorrect'); // 周囲の画像に半透明の赤色をオーバーレイ
-                    timeoutId = setTimeout(resetTask, 3350);
+                    timeoutId = setTimeout(resetTask, 2850);
                     clearInterval(countdownInterval);
                 }
             });
@@ -389,9 +389,9 @@ document.addEventListener('DOMContentLoaded', () => {
         resetOverlays();
         loadImages();
 
-        timeoutId = setTimeout(resetTask, 3350);
+        timeoutId = setTimeout(resetTask, 2850);
         clearInterval(countdownInterval);
-        startCountdown(2.5);
+        startCountdown(2.0);
     }
 
     function start () {
