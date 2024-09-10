@@ -381,7 +381,9 @@ document.addEventListener('DOMContentLoaded', () => {
         clearTimeout(timeoutId);
         clearInterval(countdownInterval);
 
-        shuffleArray(selectedImages);
+        shuffleArray(allImages);
+        selectedImages = allImages.slice(0, 30);
+
         correctIndex = getRandomInt(selectedImages.length);
         taskTitle.innerHTML = `「<strong>${selectedImages[correctIndex].task}</strong>」 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を選んでください`;
         resultMessage.textContent = 'Checking..'; // 結果メッセージをリセット
