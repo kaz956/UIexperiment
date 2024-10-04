@@ -2,11 +2,11 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>UITest</title>
     <meta
       name="description"
-      content="スタートアップのためのデジタルマーケティングを支援"
+      content="弊社が提供するマーケティングサービスを紹介します。"
     />
     <meta name="format-detection" content="telephone=no" />
     <!-- favicon/web-clip-icon -->
@@ -20,11 +20,11 @@
       property="og:url"
       content="https://zero-plus.io/lesson/ogp/hp_ogp.jpg"
     />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="ZeroPlus Corporate" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="サービス|ZeroPlus Corporate" />
     <meta
       property="og:description"
-      content="スタートアップのためのデジタルマーケティングを支援"
+      content="弊社が提供するマーケティングサービスを紹介します。"
     />
     <meta
       property="og:image"
@@ -34,7 +34,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:description"
-      content="スタートアップのためのデジタルマーケティングを支援"
+      content="弊社が提供するマーケティングサービスを紹介します。"
     />
     <meta
       name="twitter:image:src"
@@ -51,14 +51,15 @@
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/style.css" />
     <!-- js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.3/gsap.min.js"></script>
-    <script src="js/main.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+    <script src="js/script2.js" defer></script>
   </head>
   <body class="js_body">
     <header class="l_header">
-      <h1 class="l_header-logo">
+      <p class="l_header-logo">
         <a href="index.html" class="l_header-logo_link">実験用UI</a>
-      </h1>
+      </p>
       <nav class="l_header-nav js_navigation">
         <ul class="l_header-nav_list">
           <li class="l_header-nav_item">
@@ -87,21 +88,31 @@
         <span class="m_hamburger-bar"></span>
       </button>
     </header>
-    
-    <!-- /.top_kv -->
-    <footer class="l_footer2">
-      <p class="l_footer_logo">
-        <a href="" class="l_footer_logo_link">実験用UI</a>
-      </p>
+    <!-- /.l_header -->
+    <!-- /.m_kv -->
+    <main class="l_main">
+      <h1 class="task-title" id="task-title">スタートボタン<br>を押してください</h1>
+      <div class="imagetask">
+        <p class="result-message" id="result-message">Checking...</p>
+        <p class="countdown" id="countdown">4.0</p>
+      </div>
+      <div class="image-grid" id="image-grid">
+          <!-- ここに30枚の画像を配置します -->
+      </div>
+      <div class="nav-btn">
+        <button id="start-button">スタート</button>
+        <button id="stop-button">ストップ</button>
+      </div>
+    </main>
+    <!-- /.l_main -->
+    <footer class="l_footer">
+      <p class="l_footer_logo">実験用UI</p>
       <ul class="l_footer_list">
-        <li class="l_footer_item2">
+        <li class="l_footer_item">
           <a href="contact.html" class="l_footer_link">入力</a>
         </li>
-        <li class="l_footer_item2">
-          <a href="service.html" class="l_footer_link">画像選択1</a>
-        </li>
-        <li class="l_footer_item2">
-          <a href="image.html" class="l_footer_link">画像選択2</a>
+        <li class="l_footer_item">
+          <a href="service.html" class="l_footer_link">画像選択</a>
         </li>
         <!-- <li class="l_footer_item">
           <a href="case.html" class="l_footer_link">探索</a>
@@ -120,6 +131,5 @@
         <small class="l_footer-copyright_txt">&copy; 2024 UIexperiment</small>
       </p>
     </footer>
-    <!-- /.l_footer -->
   </body>
 </html>
