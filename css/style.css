@@ -54,7 +54,7 @@ body {
 #result {
   margin-top: 20px;
   margin-left: 20px;
-  font-size: 18px;
+  font-size: 26px;
   color: green;
 }
 
@@ -65,7 +65,7 @@ body {
 .keyboard {
   display: grid;
   gap: 5px;
-  margin: 40px auto 80px auto;
+  margin: 20px auto 80px auto;
 }
 
 .row {
