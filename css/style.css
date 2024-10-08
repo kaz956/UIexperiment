@@ -178,8 +178,10 @@ body {
 }
 
 .task-title {
+  font-size: 20px;
   margin-bottom: 20px;
-  margin-top: 90px;
+  margin-top: 100px;
+  margin-bottom: 8px;
 }
 
 strong {
@@ -190,6 +192,7 @@ strong {
   display: flex;
   justify-content: space-between;
   font-size: 24px;
+  margin-bottom: 12px;
 }
 
 .startMessage {
@@ -203,15 +206,6 @@ strong {
   cursor: pointer;
 }
 
-.startbtn {
-  position: absolute;
-  width: 194.5px;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  font-size: 20px;
-}
-
 .result-message {
   color: green;
   font-size: 18px;
@@ -221,12 +215,21 @@ strong {
   font-weight: bold;
 }
 
+.startbtn {
+  position: absolute;
+  width: 194.5px;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  font-size: 20px;
+}
+
 .image-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   width: 90%;
   max-width: 1200px;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
 
 .image-container {

@@ -378,6 +378,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     function resetTask() {
+        countdownElement.textContent = "2.0";
         clearTimeout(timeoutId);
         clearInterval(countdownInterval);
 
