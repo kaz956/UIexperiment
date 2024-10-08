@@ -24,8 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const taskTitle = document.getElementById('task-title');
     const imageGrid = document.getElementById('image-grid');
     const resultMessage = document.getElementById('result-message');
-    const startButton = document.getElementById('start-button');
-    const stopButton = document.getElementById('stop-button');
+    const startMessage = document.getElementById('startMessage');
     const countdownElement = document.getElementById('countdown');
 
     const imagesWithTasks = [
@@ -260,23 +259,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function startCountdown(seconds) {
-    const allContainers = document.querySelectorAll('.image-container');
-    let countdown = seconds; // 秒数を保持する変数
-    countdownElement.textContent = countdown.toFixed(1); // 初期値を表示
+        const allContainers = document.querySelectorAll('.image-container');
+        let countdown = seconds; // 秒数を保持する変数
+        countdownElement.textContent = countdown.toFixed(1); // 初期値を表示
 
-    countdownInterval = setInterval(() => {
-        countdown -= 0.1; // 0.1秒ずつ減らす
+        countdownInterval = setInterval(() => {
+            countdown -= 0.1; // 0.1秒ずつ減らす
 
-        if (countdown > 0) {
-            countdownElement.textContent = countdown.toFixed(1); // 小数点第1位まで表示
-        } else {
-            clearInterval(countdownInterval); // カウントダウンが0以下になったらタイマーを停止
-            countdownElement.textContent = "0.0"; // 最終的に0.0と表示
-            applyOverlay(allContainers[correctIndex], 'correct'); // 正解の画像にオーバーレイを適用
-            applyOverlayToNeighbors(allContainers[correctIndex], 'incorrect'); // 周囲の画像にオーバーレイを適用
-        }
-    }, 90); // 100ミリ秒ごとに更新
-}
+            if (countdown > 0) {
+                countdownElement.textContent = countdown.toFixed(1); // 小数点第1位まで表示
+            } else {
+                clearInterval(countdownInterval); // カウントダウンが0以下になったらタイマーを停止
+                countdownElement.textContent = "0.0"; // 最終的に0.0と表示
+                applyOverlay(allContainers[correctIndex], 'correct'); // 正解の画像にオーバーレイを適用
+                applyOverlayToNeighbors(allContainers[correctIndex], 'incorrect'); // 周囲の画像にオーバーレイを適用
+                timeoutId = setTimeout(resetTask, 1500);
+            }
+        }, 90); // 100ミリ秒ごとに更新
+    }
 
 
     function sendMessageToSwift(message) {
@@ -319,7 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                     applyOverlay(allContainers[correctIndex], 'correct'); // 正解の画像に半透明の緑色をオーバーレイ
                     applyOverlayToNeighbors(allContainers[correctIndex], 'incorrect'); // 周囲の画像に半透明の赤色をオーバーレイ
-                    timeoutId = setTimeout(resetTask, 4850);
+                    timeoutId = setTimeout(resetTask, 1500);
                     clearInterval(countdownInterval);
                 }
             });
@@ -388,12 +388,17 @@ document.addEventListener('DOMContentLoaded', () => {
         taskTitle.innerHTML = `「<strong>${selectedImages[correctIndex].task}</strong>」 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を選んでください`;
         resultMessage.textContent = 'Checking..'; // 結果メッセージをリセット
         resultMessage.style.color = 'green'; // メッセージの色をデフォルトに戻す
+        
         resetOverlays();
-        loadImages();
+        startMessage.style.display = 'block';
+        resetimg();
 
-        timeoutId = setTimeout(resetTask, 4850);
-        clearInterval(countdownInterval);
-        startCountdown(4.0);
+        startMessage.addEventListener('click', () => {
+            startMessage.style.display = 'none';
+            loadImages();
+            clearInterval(countdownInterval);
+            startCountdown(4.0);
+        });   
     }
 
     function start () {
@@ -402,30 +407,14 @@ document.addEventListener('DOMContentLoaded', () => {
             startflag++;
             resetTask();
         }
-        if (startflag != 0 && stopflag == 1) {
-            clearTimeout(timeoutId);
-            clearInterval(countdownInterval);
-            const countdownElement = document.getElementById('countdown');
-            const countdownText = countdownElement.textContent;
-            const seconds = parseInt(countdownText);
-            startCountdown(seconds);
-            timeoutId = setTimeout(resetTask, seconds * 1300);
-            stopflag--;
-        }
     }
 
-    function stop () {
-        console.log(stopflag);
-        if (startflag != 0 && stopflag == 0) {
-            clearTimeout(timeoutId);
-            clearInterval(countdownInterval);
-            stopflag++;
-            return;
-        }
+    function resetimg() {
+        imageGrid.innerHTML = '';
     }
 
-    startButton.addEventListener('click', start);
-    stopButton.addEventListener('click', stop);
+    startMessage.style.display = 'block';
+    start();
 });
 
 
