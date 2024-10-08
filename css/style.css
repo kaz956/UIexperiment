@@ -193,7 +193,7 @@ strong {
 }
 
 .startMessage {
-  display: flex;
+  position: relative;
   align-items: center;
   justify-content: center;
   width: 70vw;
@@ -204,6 +204,11 @@ strong {
 }
 
 .startbtn {
+  position: absolute;
+  width: 194.5px;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
   font-size: 20px;
 }
 
@@ -221,6 +226,7 @@ strong {
   grid-template-columns: repeat(5, 1fr);
   width: 90%;
   max-width: 1200px;
+  margin-bottom: 40px;
 }
 
 .image-container {
@@ -274,22 +280,6 @@ strong {
 .nav-btn {
   display: flex;
   justify-content: space-between;
-}
-
-#start-button {
-  margin: 20px auto 80px auto;
-  padding: 8px 16px;
-  font-size: 12px;
-  cursor: pointer;
-  border: 1px solid #000;
-}
-
-#stop-button {
-  margin: 20px auto 80px auto;
-  padding: 8px 16px;
-  font-size: 12px;
-  cursor: pointer;
-  border: 1px solid #000;
 }
 
 /* クリックした際の青い枠線を削除 */
