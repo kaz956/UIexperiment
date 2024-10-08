@@ -192,6 +192,15 @@ strong {
   font-size: 24px;
 }
 
+#startMessage {
+  font-size: 24px;
+  color: blue;
+  text-align: center;
+  cursor: pointer;
+  padding: 20px;
+  background-color: lightgray;
+}
+
 .result-message {
   color: green;
   font-size: 18px;

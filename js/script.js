@@ -24,8 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const taskTitle = document.getElementById('task-title');
     const imageGrid = document.getElementById('image-grid');
     const resultMessage = document.getElementById('result-message');
-    const startButton = document.getElementById('start-button');
-    const stopButton = document.getElementById('stop-button');
+    const startMessage = document.getElementById('startMessage');
     const countdownElement = document.getElementById('countdown');
 
     const imagesWithTasks = [
@@ -388,12 +387,19 @@ document.addEventListener('DOMContentLoaded', () => {
         taskTitle.innerHTML = `「<strong>${selectedImages[correctIndex].task}</strong>」 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を選んでください`;
         resultMessage.textContent = 'Checking..'; // 結果メッセージをリセット
         resultMessage.style.color = 'green'; // メッセージの色をデフォルトに戻す
+        
         resetOverlays();
-        loadImages();
+        startMessage.style.display = 'block';
+        resetimg();
 
-        timeoutId = setTimeout(resetTask, 2850);
-        clearInterval(countdownInterval);
-        startCountdown(2.0);
+        startMessage.addEventListener('click', () => {
+            startMessage.style.display = 'none';
+            loadImages();
+            timeoutId = setTimeout(resetTask, 3000);
+            clearInterval(countdownInterval);
+            startCountdown(2.0);
+        });
+        
     }
 
     function start () {
@@ -402,30 +408,14 @@ document.addEventListener('DOMContentLoaded', () => {
             startflag++;
             resetTask();
         }
-        if (startflag != 0 && stopflag == 1) {
-            clearTimeout(timeoutId);
-            clearInterval(countdownInterval);
-            const countdownElement = document.getElementById('countdown');
-            const countdownText = countdownElement.textContent;
-            const seconds = parseInt(countdownText);
-            startCountdown(seconds);
-            timeoutId = setTimeout(resetTask, seconds * 1300);
-            stopflag--;
-        }
     }
 
-    function stop () {
-        console.log(stopflag);
-        if (startflag != 0 && stopflag == 0) {
-            clearTimeout(timeoutId);
-            clearInterval(countdownInterval);
-            stopflag++;
-            return;
-        }
+    function resetimg() {
+        imageGrid.innerHTML = '';
     }
 
-    startButton.addEventListener('click', start);
-    stopButton.addEventListener('click', stop);
+    startMessage.style.display = 'block';
+    start();
 });
 
 
