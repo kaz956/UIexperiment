@@ -98,7 +98,7 @@ const words = [
   "waterspout", "whiteout", "mist", "chance of showers", "sunny spells", "overcast", "clear skies", "partly cloudy", "scattered clouds", "broken clouds",
   "cumulus clouds", "cirrus clouds", "stratus clouds", "altocumulus clouds", "nimbostratus clouds", "cumulonimbus clouds", "mammatus clouds", "funnel cloud", "wall cloud", "shelf cloud",
   "virga", "mackerel sky", "contrail", "chemtrail", "streak lightning", "sheet lightning", "ball lightning", "dry thunderstorm", "wet thunderstorm", "supercell",
-  "mesocyclone", "roll cloud", "willy-willy", "dust devil", "fire whirl", "vortex", "thermal", "delta breeze", "trade winds", "sea breeze",
+  "mesocyclone", "roll cloud", "dust devil", "fire whirl", "vortex", "thermal", "delta breeze", "trade winds", "sea breeze",
   "polar vortex", "jet stream", "foehn wind", "katabatic wind", "land breeze", "night breeze", "anabatic wind", "lee wave", "mountain breeze", "nor easter",
 
   "fennel", "garlic", "horseradish", "jicama", "kale", "lettuce", "mushroom", "onion", "pepper", "quandong",
