@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { src: 'newimg/果実類_メロン_003_128mm_1094g.png', task: 'メロン' },
         { src: 'newimg/果実類_ライチ_001_38mm_26g.png', task: 'ライチ' },
         { src: 'newimg/果実類_ラズベリー_007_76mm_50g.png', task: 'ラズベリー' },
-        { src: 'newimg/果実類_りんご_001_94mm_263g.png', task: 'りんご' },
+        { src: 'newimg/果実類_りんご_001_94mm_263g.png', task: '赤りんご' },
         { src: 'newimg/果実類_レモン_002_91mm_166g.png', task: 'レモン' },
         { src: 'newimg/果実類_柿_002_86mm_292g.png', task: '柿' },
         { src: 'newimg/果実類_西洋なし【洋なし】_001_78mm_400g.png', task: '洋ナシ' },

@@ -229,7 +229,7 @@ strong {
   grid-template-columns: repeat(5, 1fr);
   width: 90%;
   max-width: 1200px;
-  margin-bottom: 60px;
+  margin-bottom: 100px;
 }
 
 .image-container {
