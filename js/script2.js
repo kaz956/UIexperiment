@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Create the inner '×' button
       const closeButton = document.createElement("button");
       closeButton.className = "close-button";
-      closeButton.textContent = "×";
+      closeButton.innerHTML = "<strong>×</strong>";
   
       // Append the '×' button to the square button
       squareButton.appendChild(closeButton);
