@@ -96,6 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
             tapArea.style.display = 'none';
             taskTitle.innerHTML = `画面 <br>をタップしてください`;
             squareButton.remove();
+            window.location.href = "hazure.html";
         }, 350);
       });
       
