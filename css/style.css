@@ -216,6 +216,15 @@ strong {
   font-weight: bold;
 }
 
+.count {
+  font-size: 18px;
+}
+
+.score {
+  color: green;
+  font-weight: bold;
+}
+
 .startbtn {
   position: absolute;
   width: 194.5px;

@@ -47,12 +47,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const tapArea = document.getElementById("tap-area");
   
     startMessage.addEventListener("click", () => {
-      // Start action: hide the start message
-      startMessage.style.display = "none";
-      tapArea.style.display = "block";
-      taskTitle.innerHTML = `「<strong>×ボタン</strong>」<br>&nbsp;&nbsp;を押してください`;
-      // Create and place the button in a random position
-      placeRandomButton();
+      setTimeout(() => {
+        startMessage.style.display = "none";
+        tapArea.style.display = "block";
+        taskTitle.innerHTML = `「<strong>×ボタン</strong>」<br>&nbsp;&nbsp;を押してください`;
+        placeRandomButton();
+      }, 500);
     });
   
     function placeRandomButton() {
@@ -89,25 +89,29 @@ document.addEventListener("DOMContentLoaded", () => {
   
       // Add click event to the square button
       squareButton.addEventListener("click", () => {
-        startMessage.style.display = 'block';
-        tapArea.style.display = 'none';
-        taskTitle.innerHTML = `画面 <br>をタップしてください`;
         showResultMessage('Incorrect!', false);
         sendMessageToSwift("Incorrect");
-        squareButton.remove();
+        setTimeout(() => {
+            startMessage.style.display = 'block';
+            tapArea.style.display = 'none';
+            taskTitle.innerHTML = `画面 <br>をタップしてください`;
+            squareButton.remove();
+        }, 250);
       });
       
       // Add click event to the close button
       closeButton.addEventListener("click", (event) => {
         event.stopPropagation(); // Prevent event from propagating to squareButton
-        startMessage.style.display = 'block';
-        tapArea.style.display = 'none';
-        taskTitle.innerHTML = `画面 <br>をタップしてください`;
         showResultMessage('Correct!', true);
         sendMessageToSwift("Correct");
-        squareButton.remove();
         count++;
         countdownElement.innerHTML = `Score : <span style="color: green; font-weight: bold;">${count}</span>`;
+        setTimeout(() => {
+            startMessage.style.display = 'block';
+            tapArea.style.display = 'none';
+            taskTitle.innerHTML = `画面 <br>をタップしてください`;
+            squareButton.remove();
+        }, 250);
       });
     }
   });
