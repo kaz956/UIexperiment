@@ -22,6 +22,8 @@ navLinks.forEach(navLink => {
 
 const resultMessage = document.getElementById('result-message');
 const taskTitle = document.getElementById('task-title');
+const countdownElement = document.getElementById('count');
+let count = 0;
 
 function sendMessageToSwift(message) {
     if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.jsToSwift) {
@@ -104,6 +106,8 @@ document.addEventListener("DOMContentLoaded", () => {
         showResultMessage('Correct!', true);
         sendMessageToSwift("Correct");
         squareButton.remove();
+        count++;
+        countdownElement.innerHTML = `Score : <span style="color: green; font-weight: bold;">${count}</span>`;
       });
     }
   });
