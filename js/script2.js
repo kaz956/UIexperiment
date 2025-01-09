@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
             tapArea.style.display = 'none';
             taskTitle.innerHTML = `画面 <br>をタップしてください`;
             squareButton.remove();
-        }, 250);
+        }, 350);
       });
       
       // Add click event to the close button
@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
             tapArea.style.display = 'none';
             taskTitle.innerHTML = `画面 <br>をタップしてください`;
             squareButton.remove();
-        }, 250);
+        }, 350);
       });
     }
   });
