@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Set random position within tap-area
       const areaWidth = tapArea.offsetWidth;
       const areaHeight = tapArea.offsetHeight;
-      const buttonSize = 50; // Button size (width & height)
+      const buttonSize = 80; // Button size (width & height)
   
       const randomX = Math.random() * (areaWidth - buttonSize);
       const randomY = Math.random() * (areaHeight - buttonSize);
