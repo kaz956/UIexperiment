@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Create the outer square button
       const squareButton = document.createElement("button");
       squareButton.className = "square-button";
+      squareButton.style.position = "absolute";
   
       // Create the inner '×' button
       const closeButton = document.createElement("button");
@@ -79,9 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
       squareButton.style.left = `${randomX}px`;
       squareButton.style.top = `${randomY}px`;
       squareButton.style.position = 'absolute';
-
-      console.log(randomX);
-      console.log(randomY);
       
   
       // Append the square button to tap-area
