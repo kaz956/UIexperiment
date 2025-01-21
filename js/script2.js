@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
       
   
       // Append the square button to tap-area
-      tapArea.appendChild(squareButton);
+      tapArea.insertAdjacentElement("beforeend", squareButton);
   
       // Add click event to the square button
       squareButton.addEventListener("click", () => {
