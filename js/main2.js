@@ -20,6 +20,14 @@ navLinks.forEach(navLink => {
     });
 });
 
+function receiveMessageFromSwift(data) {
+  alert("呼ばれました！");
+  if (data === '1') {
+      abortProcessing = true;
+      alert("処理が中断されました！"); // ポップアップを表示
+  }
+}
+
 //英語の単語リストを取得するAPIのURL
 // const WORDS_API_URL = 'https://random-word-api.herokuapp.com/word?number=1';
 
