@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    function receiveFromSwift(data) {
+    function receiveMessageFromSwift(data) {
         if (data === '1') {
             abortProcessing = true;
             alert("処理が中断されました！"); // ポップアップを表示
