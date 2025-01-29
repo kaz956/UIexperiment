@@ -20,6 +20,13 @@ navLinks.forEach(navLink => {
     });
 });
 
+function receiveMessageFromSwift(data) {
+    if (data === '1') {
+        abortProcessing = true;
+        alert("処理が中断されました！"); // ポップアップを表示
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const taskTitle = document.getElementById('task-title');
     const imageGrid = document.getElementById('image-grid');
@@ -135,13 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
             img.src = image.src;
         });
     }
-    
-    function receiveMessageFromSwift(data) {
-        if (data === '1') {
-            abortProcessing = true;
-            alert("処理が中断されました！"); // ポップアップを表示
-        }
-    }
+
     // すべての画像を事前に読み込む
     preloadImages(imagesWithTasks);
 
