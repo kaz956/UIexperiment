@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
             container.addEventListener('click', () => {
                 setTimeout(() => {
                     if(abortProcessing) {
-                        
+                        alert("処理が中断されました！");
                         return;
                     }
                 }, 300);
