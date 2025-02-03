@@ -20,14 +20,6 @@ navLinks.forEach(navLink => {
     });
 });
 
-function receiveMessageFromSwift(data) {
-    alert("呼ばれました！");
-    if (data === '1') {
-        abortProcessing = true;
-        alert("処理が中断されました！"); // ポップアップを表示
-    }
-}
-
 const resultMessage = document.getElementById('result-message');
 const taskTitle = document.getElementById('task-title');
 const countdownElement = document.getElementById('count');

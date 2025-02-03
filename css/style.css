@@ -242,6 +242,15 @@ strong {
   margin-bottom: 120px;
 }
 
+.image-grid2 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 40px;
+  width: 90%;
+  max-width: 1200px;
+  margin-bottom: 120px;
+}
+
 .image-container {
   position: relative;
   cursor: pointer;
@@ -2000,4 +2009,124 @@ span {
 
 .js_h-slide_trigger {
   overflow: hidden;
+}
+
+
+/* ポップアップの背景 (初期状態では非表示) */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 半透明の黒 */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* ポップアップの内容 */
+.popup-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+  position: relative;
+}
+
+/* 閉じるボタン */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* ボタンのスタイル */
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#game {
+  display: grid;
+  grid-template-columns: repeat(10, 30px);
+  gap: 2px;
+  justify-content: center;
+  margin: 20px auto;
+  margin-top: 120px;
+}
+
+.cell {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+.cell.open {
+  background-color: #fff;
+}
+
+.cell.bomb {
+  background-color: red;
+}
+
+.cell.flag {
+  background-color: yellow;
+}
+
+#popup {
+  font-weight: bold;
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  z-index: 1001;
+  border-radius: 10px;
+}
+
+#popup button {
+  margin: 10px;
+  border: #000 solid 1px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 15%;
+}
+
+#warning{
+  color: red;
+  font-size: 20px;
+  padding: 15px 10px;
+}
+
+#continue {
+  background: #9ddaa0;
+}
+
+#overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
 }
