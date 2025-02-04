@@ -2142,3 +2142,21 @@ button {
 #uploadBtn {
   background-color: rgb(58, 166, 255);
 }
+
+.space {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+}
+
+#correctionDiv {
+  font-weight: bold;
+}
+
+.correction-btn {
+  font-size: 24px; /* 🔹 文字を大きく */
+  padding: 5px 20px; /* 🔹 ボタンのサイズを調整 */
+  margin: 5px 10px; /* 🔹 ボタン間のスペース */
+  border-radius: 8px; /* 🔹 角を丸く */
+  border: 2px solid #333; /* 🔹 枠線を追加 */
+}

@@ -172,29 +172,86 @@ document.addEventListener('DOMContentLoaded', () => {
           } else {
               output.value += keyValue;
           }
-
-          const typedWord = output.value.trim();
-          if (typedWord === currentWord.substring(0, typedWord.length)) {
-            if (typedWord === currentWord) {
-              resultDiv.textContent = "Correct!";
-              sendMessageToSwift("Correct")
-              resultDiv.style.color = "green";
-              setTimeout(async function() {
-                resultDiv.textContent = "Checking...";
-                output.value = "";
-                currentWord = getRandomWord();
-                wordDiv.textContent = currentWord;
-              }, 1000);
-            } else {
-              resultDiv.textContent = "Correct!"; // タイピング中はエラーメッセージをクリア
-              sendMessageToSwift("Correct")
-              resultDiv.style.color = "green";
-            }
-          } else {
-            resultDiv.textContent = "Incorrect!";
-            sendMessageToSwift("Incorrect")
-            resultDiv.style.color = "red";
-          }
+          handleTyping();
       });
   });
+
+  function handleTyping() {
+    const typedWord = output.value.trim();
+    if (typedWord === currentWord.substring(0, typedWord.length)) {
+      if (typedWord === currentWord) {
+        resultDiv.textContent = "Correct!";
+        sendMessageToSwift("Correct")
+        resultDiv.style.color = "green";
+        setTimeout(async function() {
+          resultDiv.textContent = "Checking...";
+          output.value = "";
+          currentWord = getRandomWord();
+          wordDiv.textContent = currentWord;
+        }, 1000);
+      } else {
+        resultDiv.textContent = "Correct!"; // タイピング中はエラーメッセージをクリア
+        sendMessageToSwift("Correct")
+        resultDiv.style.color = "green";
+      }
+    } else {
+      resultDiv.textContent = "Incorrect!";
+      sendMessageToSwift("Incorrect")
+      resultDiv.style.color = "red";
+      showCorrectionOptions(typedWord, currentWord);
+    }
+  }
+
+
+  // 🔹 修正候補ボタンを表示する関数
+  function showCorrectionOptions(typedWord, correctWord) {
+      correctionDiv.innerHTML = ""; // 以前の修正ボタンを削除
+      let incorrectIndex = findFirstIncorrectIndex(typedWord, correctWord);
+      if (incorrectIndex === -1) return;
+
+      let incorrectChar = typedWord[incorrectIndex] || "";
+      let correctChar = correctWord[incorrectIndex] || "";
+
+      if (!incorrectChar || !correctChar) return;
+
+      let adjacentChars = getAdjacentCharacters(incorrectChar);
+      
+      adjacentChars.forEach(char => {
+          const suggestionBtn = document.createElement("button");
+          suggestionBtn.textContent = char;
+          suggestionBtn.classList.add("correction-btn");
+          suggestionBtn.onclick = () => {
+              let fixedWord = typedWord.split("");
+              fixedWord[incorrectIndex] = char;
+              output.value = fixedWord.join("");
+              correctionDiv.innerHTML = ""; // ボタン削除
+              handleTyping();
+          };
+          correctionDiv.appendChild(suggestionBtn);
+      });
+  }
+
+  // 🔹 最初に間違えた文字の位置を特定
+  function findFirstIncorrectIndex(typedWord, correctWord) {
+      for (let i = 0; i < typedWord.length; i++) {
+          if (typedWord[i] !== correctWord[i]) {
+              return i;
+          }
+      }
+      return -1;
+  }
+
+  // 🔹 キーボード上で隣接する2つの文字を取得
+  function getAdjacentCharacters(char) {
+      const keyboardLayout = "1234567890qwertyuiopasdfghjklzxcvbnm"; // 英字のみ対応（拡張可能）
+      let index = keyboardLayout.indexOf(char.toLowerCase());
+      
+      if (index === -1) return []; // キーボードにない場合
+
+      let neighbors = [];
+      if (index > 0) neighbors.push(keyboardLayout[index - 1]); // 左の文字
+      if (index < keyboardLayout.length - 1) neighbors.push(keyboardLayout[index + 1]); // 右の文字
+
+      return neighbors;
+  }
 });
