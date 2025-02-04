@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>UITest</title>
+    <meta
+      name="description"
+      content="スタートアップのためのデジタルマーケティングを支援"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <!-- favicon/web-clip-icon -->
+    <link rel="icon" href="favicon.ico" type="image/ico" />
+    <link rel="icon" href="favicon.png" type="image/png" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="webclip.png" />
+    <!-- ogp -->
+    <meta property="og:site_name" content="ZeroPlus Corporate" />
+    <meta
+      property="og:url"
+      content="https://zero-plus.io/lesson/ogp/hp_ogp.jpg"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="ZeroPlus Corporate" />
+    <meta
+      property="og:description"
+      content="スタートアップのためのデジタルマーケティングを支援"
+    />
+    <meta
+      property="og:image"
+      content="https://zero-plus.io/lesson/ogp/hp_ogp.jpg"
+    />
+    <meta property="og:locale" content="ja_JP" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:description"
+      content="スタートアップのためのデジタルマーケティングを支援"
+    />
+    <meta
+      name="twitter:image:src"
+      content="https://zero-plus.io/lesson/ogp/hp_ogp.jpg"
+    />
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- css -->
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.3/gsap.min.js"></script>
+    <script src="js/file.js" defer></script>
+  </head>
+  <body class="js_body">
+    <header class="l_header">
+      <h1 class="l_header-logo">
+        <a href="index.html" class="l_header-logo_link">実験用UI</a>
+      </h1>
+
+      <button class="m_hamburger js_hamburger">
+        <span class="m_hamburger-bar"></span>
+        <span class="m_hamburger-bar"></span>
+        <span class="m_hamburger-bar"></span>
+      </button>
+    </header>
+    
+    <div class="container">
+      <h2>ファイルアップロード</h2>
+      <input type="file" id="fileInput">
+      <button id="uploadBtn" disabled>送信</button>
+    </div>
+
+    <!-- ポップアップ -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <p>本当にこのファイルをアップロードしますか？</p>
+            <button id="confirmBtn">続行</button>
+            <button id="cancelBtn">戻る</button>
+        </div>
+    </div>
+    
+    <!-- /.top_kv -->
+    <footer class="l_footer2">
+      <p class="l_footer_logo">
+        <a href="" class="l_footer_logo_link">実験用UI</a>
+      </p>
+      <ul class="l_footer_list">
+        <li class="l_footer_item2">
+          <a href="contact2.html" class="l_footer_link">入力</a>
+        </li>
+        <li class="l_footer_item2">
+          <a href="service2.html" class="l_footer_link">画像選択</a>
+        </li>
+        <!-- <li class="l_footer_item">
+          <a href="case.html" class="l_footer_link">探索</a>
+        </li> -->
+        <!-- <li class="l_footer_item">
+          <a href="company.html" class="l_footer_link">会社概要</a>
+        </li>
+        <li class="l_footer_item">
+          <a href="" class="l_footer_link">ブログ</a>
+        </li>
+        <li class="l_footer_item">
+          <a href="contact.html" class="l_footer_link">お問い合わせ</a>
+        </li> -->
+      </ul>
+      <p class="l_footer-copyright">
+        <small class="l_footer-copyright_txt">&copy; 2024 UIexperiment</small>
+      </p>
+    </footer>
+    <!-- /.l_footer -->
+  </body>
+</html>

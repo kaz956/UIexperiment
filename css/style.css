@@ -2130,3 +2130,15 @@ button {
   background: rgba(0, 0, 0, 0.5);
   z-index: 1000;
 }
+
+.container {
+  font-weight: bold;
+  margin: 100px 0px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  display: inline-block;
+}
+
+#uploadBtn {
+  background-color: rgb(58, 166, 255);
+}
