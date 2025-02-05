@@ -22,14 +22,12 @@ navLinks.forEach(navLink => {
 
 // ポップアップを表示
 function showPopup() {
-    document.getElementById("popup").style.display = "flex";
-    document.getElementById("overlay").style.display = "flex";
+    document.getElementById("popup2").style.display = "flex";
 }
 
 // ポップアップを非表示
 function hidePopup() {
-    document.getElementById("popup").style.display = "none";
-    document.getElementById("overlay").style.display = "none";
+    document.getElementById("popup2").style.display = "none";
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -37,26 +35,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const uploadBtn = document.getElementById("uploadBtn");
 
     // 「続行」ボタン
-    document.getElementById("continue").addEventListener("click", () => {
+    document.getElementById("continue2").addEventListener("click", () => {
         hidePopup();
-        uploadBtn.disabled = false;
-    });
-
-    // 「戻る」ボタン
-    document.getElementById("cancel").addEventListener("click", () => {
-        hidePopup();
+        uploadBtn.disabled = true;
         fileInput.value = ""; // ファイル選択解除
     });
 
-    // **オーバーレイ（背景）クリック時にも「戻る」と同じ処理を実行**
-    document.getElementById("overlay").addEventListener("click", () => {
+    // 「戻る」ボタン
+    document.getElementById("cancel2").addEventListener("click", () => {
         hidePopup();
-        uploadBtn.disabled = false;
-        fileName.textContent = "No file selected"; // Reset text
-        // 少し遅らせてファイル選択ダイアログを開く
+        uploadBtn.disabled = true;
+        fileInput.value = ""; // ファイル選択解除
         setTimeout(() => {
             fileInput.click(); 
-        }, 500);
+        }, 200);
     });
 
     fileInput.addEventListener("change", () => {

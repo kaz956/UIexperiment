@@ -243,12 +243,7 @@ strong {
 }
 
 .image-grid2 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  margin-top: 40px;
-  width: 90%;
-  max-width: 1200px;
-  margin-bottom: 120px;
+  display: flex;
 }
 
 .image-container {
@@ -260,6 +255,24 @@ strong {
 }
 
 .image-container img {
+  width: calc(80vw / 5);
+  height: calc(80vw / 5);
+  display: block;
+  object-fit: scale-down;
+  transition: border 0.3s;
+  border: 2px solid #fff;
+  background-color: transparent;
+}
+
+.image-container2 {
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  filter: none;
+}
+
+.image-container2 img {
   width: calc(80vw / 5);
   height: calc(80vw / 5);
   display: block;
@@ -2027,7 +2040,7 @@ span {
 /* ポップアップの内容 */
 .popup-content {
   background-color: white;
-  padding: 20px;
+  padding: 10px 20px;
   border-radius: 10px;
   text-align: center;
   position: relative;
@@ -2056,7 +2069,7 @@ button {
   gap: 2px;
   justify-content: center;
   margin: 20px auto;
-  margin-top: 120px;
+  margin-top: 92px;
 }
 
 .cell {
@@ -2087,18 +2100,43 @@ button {
   font-weight: bold;
   display: none;
   position: fixed;
-  top: 15%;
+  top: 60px;
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
-  padding: 20px;
+  padding: 10px 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   text-align: center;
   z-index: 1001;
   border-radius: 10px;
 }
 
+#popup2 {
+  font-weight: bold;
+  display: none;
+  position: fixed;
+  top: 150px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 10px 20px;
+  text-align: center;
+  z-index: 1001;
+  border: #000 solid 1px;
+  border-radius: 10px;
+}
+
+
 #popup button {
+  margin: 10px;
+  border: #000 solid 1px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 15%;
+}
+
+#popup2 button {
   margin: 10px;
   border: #000 solid 1px;
   padding: 10px 20px;
@@ -2113,8 +2151,23 @@ button {
   padding: 15px 10px;
 }
 
+#warning2{
+  color: green;
+  font-size: 20px;
+  padding: 15px 10px;
+}
+
 #continue {
   background: #9ddaa0;
+}
+
+#continue2 {
+  color: white;
+  background: rgba(255, 38, 38, 0.779);
+}
+
+#cancel2 {
+  background-color: #9ddaa0;;
 }
 
 #overlay {

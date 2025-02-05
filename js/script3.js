@@ -22,25 +22,9 @@ navLinks.forEach(navLink => {
 
 // ポップアップの要素
 const popup = document.getElementById('popup');
-const closePopupBtn = document.getElementById('closePopupBtn');
-const popupContent = document.querySelector('.popup-content');
 let timemoving = true;
 let abortProcessing = false;
 let group = '';
-
-// 追加のカスタマイズ (ポップアップ内のコンテンツを変更)
-function changePopupContent() {
-    const content = popup.querySelector('.popup-content');
-    content.innerHTML = '<h2>新しいコンテンツ!</h2><p>ポップアップの内容が変更されました。</p>';
-    const closeBtn = document.createElement('span');
-    closeBtn.innerHTML = '&times;';
-    closeBtn.classList.add('close-btn');
-    content.appendChild(closeBtn);
-    closeBtn.addEventListener('click', () => {
-        popup.style.display = 'none';
-    });
-}
-
 
 document.addEventListener('DOMContentLoaded', () => {
     const taskTitle = document.getElementById('task-title');
@@ -157,27 +141,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ポップアップを閉じる関数
-    closePopupBtn.addEventListener('click', () => {
-        popup.style.display = 'none';  // ポップアップを非表示
-        timemoving = true;
-        abortProcessing = false
-        startCountdown(countdown)
-        timeoutId = setTimeout(resetTask, countdown * 1000 + 1200);
-    });
-
     // 背景をクリックしたらポップアップを閉じる
     popup.addEventListener('click', () => {
         popup.style.display = 'none';
-        timemoving = true;
-        abortProcessing = false
-        startCountdown(countdown)
+        document.getElementById("overlay").style.display = "none";
+        abortProcessing = false;
+        startCountdown(countdown);
         timeoutId = setTimeout(resetTask, countdown * 1000 + 1200);
     });
 
-    // ポップアップの中身をクリックしたときは閉じない
-    popupContent.addEventListener('click', (event) => {
-        event.stopPropagation();
+    // **オーバーレイ（背景）クリック時にも「戻る」と同じ処理を実行**
+    document.getElementById("overlay").addEventListener("click", () => {
+        document.getElementById("popup").style.display = "none";
+        document.getElementById("overlay").style.display = "none";
+        timemoving = true;
+        abortProcessing = false;
+        startCountdown(countdown);
+        timeoutId = setTimeout(resetTask, countdown * 1000 + 1200);
     });
     
     function receiveMessageFromSwift(data) {
@@ -265,6 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     }, 300);
                     popup.style.display = 'flex';  // ポップアップを表示
+                    document.getElementById("overlay").style.display = "flex";
                     timemoving = false;
                     clearTimeout(timeoutId);
                     clearInterval(countdownInterval);
@@ -335,6 +316,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     function resetTask() {
+        timemoving = true;
         countdownElement.textContent = "2.0";
         clearTimeout(timeoutId);
         clearInterval(countdownInterval);
@@ -404,21 +386,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 imageGrid2.appendChild(container);
                 
                 container.addEventListener('click', () => {
-                    if (stopflag == 0) {
-                        clearTimeout(timeoutId);
-                        clearInterval(countdownInterval);
-                        const allContainers = document.querySelectorAll('.image-container2');
-                        if (image.task === selectedImages[correctIndex].task) {
-                            showResultMessage('Correct!', true);
-                            sendMessageToSwift("Correct")
-                        } else {
-                            showResultMessage('Incorrect!', false);
-                            sendMessageToSwift("Incorrect")
-                            applyOverlay(container, 'selectedincorrect');
-                        }
-                        timeoutId = setTimeout(resetTask, 1500);
-                        clearInterval(countdownInterval);
+                    clearTimeout(timeoutId);
+                    clearInterval(countdownInterval);
+                    const allContainers = document.querySelectorAll('.image-container');
+                    if (image.task === selectedImages[correctIndex].task) {
+                        showResultMessage('Correct!', true);
+                        sendMessageToSwift("Correct")
+                    } else {
+                        showResultMessage('Incorrect!', false);
+                        sendMessageToSwift("Incorrect")
+                        applyOverlay(container, 'selectedincorrect');
                     }
+                    applyOverlay(allContainers[correctIndex], 'correct'); // 正解の画像に半透明の緑色をオーバーレイ
+                    applyOverlayToNeighbors(allContainers[correctIndex], 'incorrect'); // 周囲の画像に半透明の赤色をオーバーレイ
+                    timeoutId = setTimeout(resetTask, 1500);
+                    clearInterval(countdownInterval);
                 });
             });;
         } else {
@@ -437,20 +419,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 imageGrid2.appendChild(container);
                 
                 container.addEventListener('click', () => {
-                    if (stopflag == 0) {
-                        clearTimeout(timeoutId);
-                        clearInterval(countdownInterval);
-                        const allContainers = document.querySelectorAll('.image-container2');
-                        if (image.task === selectedImages[correctIndex].task) {
-                            showResultMessage('Correct!', true);
-                            sendMessageToSwift("Correct")
-                        } else {
-                            showResultMessage('Incorrect!', false);
-                            sendMessageToSwift("Incorrect")
-                        }
-                        timeoutId = setTimeout(resetTask, 1500);
-                        clearInterval(countdownInterval);
+                    clearTimeout(timeoutId);
+                    clearInterval(countdownInterval);
+                    const allContainers = document.querySelectorAll('.image-container');
+                    if (image.task === selectedImages[correctIndex].task) {
+                        showResultMessage('Correct!', true);
+                        sendMessageToSwift("Correct")
+                    } else {
+                        showResultMessage('Incorrect!', false);
+                        sendMessageToSwift("Incorrect")
                     }
+                    applyOverlay(allContainers[correctIndex], 'correct'); // 正解の画像に半透明の緑色をオーバーレイ
+                    applyOverlayToNeighbors(allContainers[correctIndex], 'incorrect'); // 周囲の画像に半透明の赤色をオーバーレイ
+                    timeoutId = setTimeout(resetTask, 1500);
+                    clearInterval(countdownInterval);
                 });
             });;
         }
