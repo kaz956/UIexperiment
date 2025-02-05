@@ -150,15 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
         timeoutId = setTimeout(resetTask, countdown * 1000 + 1200);
     });
 
-    // **オーバーレイ（背景）クリック時にも「戻る」と同じ処理を実行**
-    document.getElementById("overlay").addEventListener("click", () => {
-        document.getElementById("popup").style.display = "none";
-        document.getElementById("overlay").style.display = "none";
-        timemoving = true;
-        abortProcessing = false;
-        startCountdown(countdown);
-        timeoutId = setTimeout(resetTask, countdown * 1000 + 1200);
-    });
+    
     
     function receiveMessageFromSwift(data) {
         if (data === '1') {
@@ -348,6 +340,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const imageGrid2 = document.getElementById('image-grid2');
 
     function setpopup(image, group, index) {
+        // **オーバーレイ（背景）クリック時にも「戻る」と同じ処理を実行**
+        document.getElementById("overlay").addEventListener("click", () => {
+            document.getElementById("popup").style.display = "none";
+            document.getElementById("overlay").style.display = "none";
+            abortProcessing = false;
+            clearTimeout(timeoutId);
+            clearInterval(countdownInterval);
+            const allContainers = document.querySelectorAll('.image-container');
+            if (image.task === selectedImages[correctIndex].task) {
+                showResultMessage('Correct!', true);
+                sendMessageToSwift("Correct")
+            } else {
+                showResultMessage('Incorrect!', false);
+                sendMessageToSwift("Incorrect")
+            }
+            applyOverlay(allContainers[correctIndex], 'correct'); // 正解の画像に半透明の緑色をオーバーレイ
+            applyOverlayToNeighbors(allContainers[correctIndex], 'incorrect'); // 周囲の画像に半透明の赤色をオーバーレイ
+            timeoutId = setTimeout(resetTask, 1500);
+            clearInterval(countdownInterval);
+        });
         imageGrid2.innerHTML = '';
         let groupedImages;
     
