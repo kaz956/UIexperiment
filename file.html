@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="jp">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -57,7 +57,7 @@
   <body class="js_body">
     <header class="l_header">
       <h1 class="l_header-logo">
-        <a href="index.html" class="l_header-logo_link">実験用UI</a>
+        <a href="index.html" class="l_header-logo_link">Experimental UI</a>
       </h1>
 
       <button class="m_hamburger js_hamburger">
@@ -68,24 +68,24 @@
     </header>
     
     <div class="container">
-      <h2>ファイルアップロード</h2>
-      <input type="file" id="fileInput">
-      <button id="uploadBtn" disabled>送信</button>
+      <h2>Upload File</h2>
+      <input type="file" id="fileInput" accept=".pdf, .docx, .txt">
     </div>
+    <button id="uploadBtn" disabled>Send</button>
 
     <!-- ポップアップ -->
-    <div id="popup" class="popup">
-        <div class="popup-content">
-            <p>本当にこのファイルをアップロードしますか？</p>
-            <button id="confirmBtn">続行</button>
-            <button id="cancelBtn">戻る</button>
-        </div>
+
+    <div id="popup">
+      <p id="warning">Really?</p>
+      <button id="continue">Yes</button>
+      <button id="cancel">Change</button>
     </div>
+    <div id="overlay"></div>    
     
     <!-- /.top_kv -->
     <footer class="l_footer2">
       <p class="l_footer_logo">
-        <a href="" class="l_footer_logo_link">実験用UI</a>
+        <a href="" class="l_footer_logo_link">Experimental UI</a>
       </p>
       <ul class="l_footer_list">
         <li class="l_footer_item2">

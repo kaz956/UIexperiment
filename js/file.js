@@ -20,32 +20,48 @@ navLinks.forEach(navLink => {
     });
 });
 
+// ポップアップを表示
+function showPopup() {
+    document.getElementById("popup").style.display = "flex";
+    document.getElementById("overlay").style.display = "flex";
+}
+
+// ポップアップを非表示
+function hidePopup() {
+    document.getElementById("popup").style.display = "none";
+    document.getElementById("overlay").style.display = "none";
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     const fileInput = document.getElementById("fileInput");
     const uploadBtn = document.getElementById("uploadBtn");
-    const popup = document.getElementById("popup");
-    const confirmBtn = document.getElementById("confirmBtn");
-    const cancelBtn = document.getElementById("cancelBtn");
 
-    fileInput.addEventListener("change", () => {
-        if (fileInput.files.length > 0) {
-            popup.style.display = "block"; // ポップアップ表示
-        }
+    // 「続行」ボタン
+    document.getElementById("continue").addEventListener("click", () => {
+        hidePopup();
+        uploadBtn.disabled = false;
     });
 
-    confirmBtn.addEventListener("click", () => {
-        popup.style.display = "none"; // ポップアップ閉じる
-        uploadBtn.disabled = false; // 送信ボタン有効化
-    });
-
-    cancelBtn.addEventListener("click", () => {
-        popup.style.display = "none"; // ポップアップ閉じる
+    // 「戻る」ボタン
+    document.getElementById("cancel").addEventListener("click", () => {
+        hidePopup();
         fileInput.value = ""; // ファイル選択解除
     });
 
-    uploadBtn.addEventListener("click", () => {
-        alert("ファイルを送信しました！");
-        fileInput.value = ""; // 送信後にリセット
-        uploadBtn.disabled = true; // 送信ボタン無効化
+    // **オーバーレイ（背景）クリック時にも「戻る」と同じ処理を実行**
+    document.getElementById("overlay").addEventListener("click", () => {
+        hidePopup();
+        uploadBtn.disabled = false;
+        fileName.textContent = "No file selected"; // Reset text
+        // 少し遅らせてファイル選択ダイアログを開く
+        setTimeout(() => {
+            fileInput.click(); 
+        }, 500);
+    });
+
+    fileInput.addEventListener("change", () => {
+        if (fileInput.files.length > 0) {
+            showPopup();
+        }
     });
 });

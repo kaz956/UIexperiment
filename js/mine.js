@@ -28,6 +28,24 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("reset").addEventListener("click", createBoard);
 });
 
+// シード付き乱数生成関数
+function seededRandom(seed) {
+  let x = Math.sin(seed) * 10000;
+  return x - Math.floor(x);
+}
+
+// 指定されたシード値を元に乱数を生成
+function createSeededRandomGenerator(seed) {
+  return function () {
+      seed = (seed * 9301 + 49297) % 233280;
+      return seed / 233280;
+  };
+}
+
+// シード値（固定したい場合は同じ値を設定）
+const SEED_VALUE = 1234; 
+const randomGenerator = createSeededRandomGenerator(SEED_VALUE);
+
 function createBoard() {
     const game = document.getElementById("game");
     game.innerHTML = "";
@@ -39,8 +57,8 @@ function createBoard() {
     // 爆弾の配置
     let placedMines = 0;
     while (placedMines < mines) {
-        let r = Math.floor(Math.random() * rows);
-        let c = Math.floor(Math.random() * cols);
+        let r = Math.floor(randomGenerator() * rows);
+        let c = Math.floor(randomGenerator() * cols);
         if (mineMap[r][c] === 0) {
             mineMap[r][c] = -1;
             placedMines++;
