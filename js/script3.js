@@ -68,6 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const popup = document.getElementById('popup');
     const imageGrid2 = document.getElementById('image-grid2');
 
+    let tappedImage = null;
+
     if (!imageGrid || !overlay || !popup || !imageGrid2) {
         console.error("必要な要素が見つかりません。HTMLに 'overlay', 'popup', 'image-grid2', 'close-popup' を追加してください。");
         return;
@@ -84,6 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
         imgElement.dataset.src = imageData.src; // 画像のパスをデータ属性に保存
 
         imgElement.addEventListener('click', () => {
+            // タップされた画像を保存
+            tappedImage = imgElement;
+
             if (Math.random() < 0.5) { // 50%の確率でポップアップを表示
                 setpopup(imageData, imageData.group);
                 popup.style.display = 'flex';
@@ -100,6 +105,9 @@ document.addEventListener('DOMContentLoaded', () => {
     overlay.addEventListener('click', closePopupHandler);
 
     function closePopupHandler() {
+        const clickedImages = document.querySelectorAll('.clicked');
+        tappedImage.classList.add('clicked');
+
         popup.style.display = 'none';
         overlay.style.display = 'none';
     }
