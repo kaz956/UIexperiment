@@ -317,7 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
         selectedImages = allImages.slice(0, 30);
 
         correctIndex = getRandomInt(selectedImages.length);
-        taskTitle.innerHTML = `「<strong>${selectedImages[correctIndex].task}</strong>」 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;を選んでください`;
+        taskTitle.innerHTML = `Tap <br>「<strong>${selectedImages[correctIndex].task}</strong>」`;
         resultMessage.textContent = 'Checking..'; // 結果メッセージをリセット
         resultMessage.style.color = 'green'; // メッセージの色をデフォルトに戻す
         

@@ -198,6 +198,7 @@ strong {
 .startMessage {
   position: relative;
   align-items: center;
+  text-align: center;
   justify-content: center;
   width: 80vw;
   height: calc(80vw / 5 * 6);
@@ -205,6 +206,9 @@ strong {
   background-color: rgb(233, 233, 233);
   cursor: pointer;
   z-index: 1;
+}
+
+.startbtn {
 }
 
 .result-message {
