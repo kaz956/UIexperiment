@@ -39,7 +39,7 @@ body {
 #word {
   font-size: 24px;
   text-align: center;
-  margin-top: 100px;
+  margin-top: 10px;
 }
 
 #output {
@@ -251,14 +251,27 @@ strong {
   margin-bottom: 120px;
 }
 
+.icon-title {
+  margin-top: 90px;
+  margin-bottom: 32px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.icon-title2 {
+  margin-top: 90px;
+  padding-left: 24px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
 .icon-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   width: 90%;
   max-width: 1200px;
-  margin-bottom: 120px;
-  margin-top: 140px;
   gap: 6px;
+  margin: 0px auto 140px auto;
 }
 
 .grid-image {

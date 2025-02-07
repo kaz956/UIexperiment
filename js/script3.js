@@ -73,7 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    imagesWithTasks.forEach((imageData, index) => {
+    const shuffledImgaes = imagesWithTasks.sort(() => Math.random() - 0.5)
+
+    shuffledImgaes.forEach((imageData, index) => {
         const imgElement = document.createElement('img');
         imgElement.classList.add('icon-container');
         imgElement.src = imageData.src;
@@ -83,8 +85,8 @@ document.addEventListener('DOMContentLoaded', () => {
         imgElement.addEventListener('click', () => {
             if (Math.random() < 0.5) { // 50%の確率でポップアップを表示
                 setpopup(imageData, imageData.group);
-                popup.style.display = 'block';
-                overlay.style.display = 'block';
+                popup.style.display = 'flex';
+                overlay.style.display = 'flex';
             }
         });
 
