@@ -278,6 +278,12 @@ strong {
   padding: 4px;
 }
 
+.grid-image.clicked {
+  opacity: 0.5; /* 色を薄くする */
+  border: 2px solid red; /* 赤枠を追加 */
+  filter: grayscale(50%); /* 色を少しグレースケールに */
+}
+
 .image-grid2 {
   display: flex;
 }

@@ -81,12 +81,15 @@ document.addEventListener('DOMContentLoaded', () => {
         imgElement.src = imageData.src;
         imgElement.alt = `画像${index + 1}`;
         imgElement.classList.add('grid-image');
+        imgElement.dataset.src = imageData.src; // 画像のパスをデータ属性に保存
 
         imgElement.addEventListener('click', () => {
             if (Math.random() < 0.5) { // 50%の確率でポップアップを表示
                 setpopup(imageData, imageData.group);
                 popup.style.display = 'flex';
                 overlay.style.display = 'flex';
+            } else {
+                imgElement.classList.add('clicked');
             }
         });
 
@@ -119,8 +122,32 @@ function setpopup(image, group) {
         const img = document.createElement('img');
         img.src = imgData.src;
         img.alt = `画像${idx + 1}`;
+        img.dataset.src = imgData.src; // 画像のパスをデータ属性に保存
+
+        // ポップアップ内の画像をクリックしたときの処理
+        img.addEventListener('click', () => {
+            markImageAsClicked(imgData.src);
+            closePopup();
+        });
 
         container.appendChild(img);
         imageGrid2.appendChild(container);
     });
+}
+
+
+// 指定の画像をクリック済みにする関数
+function markImageAsClicked(imageSrc) {
+    const allImages = document.querySelectorAll('.grid-image');
+    allImages.forEach(img => {
+        if (img.dataset.src === imageSrc) {
+            img.classList.add('clicked');
+        }
+    });
+}
+
+// ポップアップを閉じる関数
+function closePopup() {
+    document.getElementById('popup').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
 }
