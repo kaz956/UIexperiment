@@ -22,6 +22,8 @@ navLinks.forEach(navLink => {
 
 const rows = 10, cols = 10, mines = 15;
 let board, mineMap;
+let pendingCell = null;
+let first = 0;
 
 document.addEventListener("DOMContentLoaded", () => {
     createBoard();
@@ -90,7 +92,11 @@ function createBoard() {
             cell.classList.add("cell");
             cell.dataset.row = r;
             cell.dataset.col = c;
-            cell.addEventListener("click", () => openCell(r, c));
+            cell.addEventListener("click", () => {
+                pendingCell = null;
+                openCell(r, c);
+                first = 1;
+            });
             cell.addEventListener("contextmenu", (e) => {
                 e.preventDefault();
                 toggleFlag(cell);
@@ -102,9 +108,6 @@ function createBoard() {
     }
 }
 
-let pendingCell = null;
-var first = 0;
-
 function openCell(r, c) {
     let cell = board[r][c];
     if (cell.classList.contains("open") || cell.classList.contains("flag")) return;
@@ -115,11 +118,9 @@ function openCell(r, c) {
         showPopup();
         return;
     } 
-
-    console.log(pendingCell);
     
     // 正しいマスでも50%の確率でポップアップを表示
-    if (Math.random() < 0.9 && !pendingCell && first) { // 50%の確率
+    if (Math.random() < 0.5 && !pendingCell && first) { // 50%の確率
         pendingCell = { row: r, col: c };
         showPopup();
         return;
@@ -127,7 +128,6 @@ function openCell(r, c) {
 
     pendingCell = { row: r, col: c };
     revealCell(r, c);
-    first = 1;
 }
 
 function revealCell(r, c) {
