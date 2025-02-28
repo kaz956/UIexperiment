@@ -103,6 +103,7 @@ function createBoard() {
 }
 
 let pendingCell = null;
+var first = 0;
 
 function openCell(r, c) {
     let cell = board[r][c];
@@ -115,18 +116,24 @@ function openCell(r, c) {
         return;
     } 
 
+    console.log(pendingCell);
+    
     // 正しいマスでも50%の確率でポップアップを表示
-    if (Math.random() < 0.5) { // 50%の確率
+    if (Math.random() < 0.5 && !pendingCell && first) { // 50%の確率
         pendingCell = { row: r, col: c };
         showPopup();
         return;
     }
 
+    pendingCell = { row: r, col: c };
     revealCell(r, c);
+    first = 1;
 }
 
 function revealCell(r, c) {
     let cell = board[r][c];
+    if (cell.classList.contains("open")) return;
+
     cell.classList.add("open");
 
     if (mineMap[r][c] === -1) {
@@ -147,6 +154,7 @@ function revealCell(r, c) {
             }
         }
     }
+    
 }
 
 // ポップアップを表示
