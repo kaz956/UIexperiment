@@ -113,10 +113,13 @@ function openCell(r, c) {
         pendingCell = { row: r, col: c };
         showPopup();
         return;
-    } else {
-        if (Math.random() < 0.5) {
-            showPopup();
-        }
+    } 
+
+    // 正しいマスでも50%の確率でポップアップを表示
+    if (Math.random() < 0.5) { // 50%の確率
+        pendingCell = { row: r, col: c };
+        showPopup();
+        return;
     }
 
     revealCell(r, c);
