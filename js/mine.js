@@ -113,6 +113,13 @@ function openCell(r, c) {
         pendingCell = { row: r, col: c };
         showPopup();
         return;
+    } else {
+        if (Math.random() < 0.5) {
+            // 爆弾の可能性がある場合、ポップアップを表示
+            pendingCell = { row: r, col: c };
+            showPopup();
+            return;
+        }
     }
 
     revealCell(r, c);
