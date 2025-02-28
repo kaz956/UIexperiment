@@ -119,7 +119,7 @@ function openCell(r, c) {
     console.log(pendingCell);
     
     // 正しいマスでも50%の確率でポップアップを表示
-    if (Math.random() < 0.5 && !pendingCell && first) { // 50%の確率
+    if (Math.random() < 0.9 && !pendingCell && first) { // 50%の確率
         pendingCell = { row: r, col: c };
         showPopup();
         return;
